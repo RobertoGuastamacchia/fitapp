@@ -1,0 +1,243 @@
+<div class="p-3 shadow">
+  <div class="py-5 text-center">
+    <img class="d-block mx-auto mb-4" src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
+    <h2>Form di Registrazione</h2>
+    <p class="lead">Below is an example form built entirely with Bootstrap’s form controls. Each required form group has
+      a
+      validation state that can be triggered by attempting to submit the form without completing it.</p>
+  </div>
+
+  <div class="row g-5">
+    <div class="col-md-12">
+      <form class="needs-validation" novalidate="">
+        <div class="row g-3">
+          <div class="col-sm-3">
+            <label for="firstName" class="form-label">Nome *</label>
+            <input type="text" class="form-control" id="firstName" [(ngModel)]="user['name']"
+              [ngModelOptions]="{standalone: true}" required>
+            <div class="invalid-feedback">
+              Inserisci un nome valido.
+            </div>
+          </div>
+
+          <div class="col-sm-3">
+            <label for="lastName" class="form-label">Cognome *</label>
+            <input type="text" class="form-control" id="lastName" [(ngModel)]="user['surname']"
+              [ngModelOptions]="{standalone: true}" required>
+            <div class="invalid-feedback">
+              Inserisci un cognome valido.
+            </div>
+          </div>
+
+          <div class="col-sm-3">
+            <label for="birthdate" class="form-label">Data di nascita *</label>
+            <div class="input-group has-validation">
+              <input type="date" class="form-control" id="birthdate" [(ngModel)]="user['birthdate']"
+                [ngModelOptions]="{standalone: true}" required>
+              <div class="invalid-feedback">
+                Inserisci una data di nascita valida.
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-3">
+            <label for="gender" class="form-label">Genere</label>
+            <div class="input-group has-validation">
+              <select class="form-select" id="gender" [(ngModel)]="user['gender']" [ngModelOptions]="{standalone: true}" required>
+                <option value="m">Uomo</option>
+                <option value="f">Donna</option>
+                <option value="f">Altro</option>
+              </select>
+              <div class="invalid-feedback">
+                Inserisci un genere valido.
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12">
+            <label for="email" class="form-label">Email *</label>
+            <input type="email" class="form-control" id="email" placeholder="you@example.com"
+              [(ngModel)]="user['email']" [ngModelOptions]="{standalone: true}" required>
+            <div class="invalid-feedback">
+              Inserisci una email valida.
+            </div>
+          </div>
+
+          <div class="col-12">
+            <label for="password" class="form-label">Password *</label>
+            <div class="input-group has-validation">
+              <input type="password" class="form-control" id="password" [(ngModel)]="user['password']"
+                [ngModelOptions]="{standalone: true}" required>
+              <div class="invalid-feedback">
+                Inserisci una password valida.
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <label for="country" class="form-label">Nazione *</label>
+            <select class="form-select" id="country" [(ngModel)]="user['country']" [ngModelOptions]="{standalone: true}"
+              required>
+              <option value="">Scegli una Nazione...</option>
+              <option value="Italia">Italia</option>
+            </select>
+            <div class="invalid-feedback">
+              Inserisci una nazione valida.
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <label for="region" class="form-label">Regione *</label>
+            <select class="form-select" id="region" [(ngModel)]="user['region']" [ngModelOptions]="{standalone: true}"
+              required>
+              <option value="">Scegli una Regione...</option>
+              <option value="Puglia">Puglia</option>
+              <option value="Campania">Campania</option>
+              <option value="Molise">Molise</option>
+              <option value="Basilicata">Basilicata</option>
+              <option value="Lombardia">Lombardia</option>
+              <option value="Piemonte">Piemonte</option>
+              <option value="Sardegna">Sardegna</option>
+              <option value="Abruzzo">Abruzzo</option>
+              <option value="Lazio">Lazio</option>
+              <option value="Umbria">Umbria</option>
+              <option value="Emilia Romagna">Emilia Romagna</option>
+              <option value="Valle d'Aosta">Valle d'Aosta</option>
+              <option value="Friuli">Friuli</option>
+              <option value="Veneto">Veneto</option>
+              <option value="Calabria">Calabria</option>
+              <option value="Liguria">Liguria</option>
+              <option value="Trentino Alto Adige">Trentino Alto Adige</option>
+              <option value="Marche">Marche</option>
+              <option value="Toscana">Toscana</option>
+              <option value="Sicilia">Sicilia</option>
+            </select>
+            <div class="invalid-feedback">
+              Inserisci una regione valida.
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <label for="city" class="form-label">Città *</label>
+            <input type="text" class="form-control" id="city" placeholder="Roma" [(ngModel)]="user['city']"
+              [ngModelOptions]="{standalone: true}" required>
+            <div class="invalid-feedback">
+              Inserisci una città valida.
+            </div>
+          </div>
+
+          <div class="col-10">
+            <label for="address" class="form-label">Indirizzo *</label>
+            <input type="text" class="form-control" id="address" placeholder="Via Roma, 1" [(ngModel)]="user['address']"
+              [ngModelOptions]="{standalone: true}" required>
+            <div class="invalid-feedback">
+              Inserisci un indirizzo valido.
+            </div>
+          </div>
+
+          <div class="col-md-2">
+            <label for="zip" class="form-label">Codice Postale *</label>
+            <input type="text" class="form-control" id="zip" [(ngModel)]="user['postalCode']"
+              [ngModelOptions]="{standalone: true}" required>
+            <div class="invalid-feedback">
+              Inserisci un codice postale valido.
+            </div>
+          </div>
+        </div>
+
+        <hr class="my-4">
+
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="isTrainer" [(ngModel)]="user['isTrainer']"
+            [ngModelOptions]="{standalone: true}">
+          <label class="form-check-label" for="isTrainer">Sei un personal Trainer?</label>
+        </div>
+
+        <hr class="my-4">
+        <div *ngIf="user.isTrainer">
+            <div class="row g-3">
+              <div class="col-sm-12">
+                <label for="gym_name" class="form-label">Nome Palestra *</label>
+                <input type="text" class="form-control" id="gym_name" [(ngModel)]="gym['name']"
+                  [ngModelOptions]="{standalone: true}" required>
+                <div class="invalid-feedback">
+                  Inserisci un nome valido.
+                </div>
+              </div>
+              <div class="col-md-3">
+                <label for="gym_country" class="form-label">Nazione *</label>
+                <select class="form-select" id="gym_country" [(ngModel)]="gym['country']" [ngModelOptions]="{standalone: true}"
+                  required>
+                  <option value="">Scegli una Nazione...</option>
+                  <option value="Italia">Italia</option>
+                </select>
+                <div class="invalid-feedback">
+                  Inserisci una nazione valida.
+                </div>
+              </div>
+    
+              <div class="col-md-3">
+                <label for="gym_region" class="form-label">Regione *</label>
+                <select class="form-select" id="gym_region" [(ngModel)]="gym['region']" [ngModelOptions]="{standalone: true}"
+                  required>
+                  <option value="">Scegli una Regione...</option>
+                  <option value="Puglia">Puglia</option>
+                  <option value="Campania">Campania</option>
+                  <option value="Molise">Molise</option>
+                  <option value="Basilicata">Basilicata</option>
+                  <option value="Lombardia">Lombardia</option>
+                  <option value="Piemonte">Piemonte</option>
+                  <option value="Sardegna">Sardegna</option>
+                  <option value="Abruzzo">Abruzzo</option>
+                  <option value="Lazio">Lazio</option>
+                  <option value="Umbria">Umbria</option>
+                  <option value="Emilia Romagna">Emilia Romagna</option>
+                  <option value="Valle d'Aosta">Valle d'Aosta</option>
+                  <option value="Friuli">Friuli</option>
+                  <option value="Veneto">Veneto</option>
+                  <option value="Calabria">Calabria</option>
+                  <option value="Liguria">Liguria</option>
+                  <option value="Trentino Alto Adige">Trentino Alto Adige</option>
+                  <option value="Marche">Marche</option>
+                  <option value="Toscana">Toscana</option>
+                  <option value="Sicilia">Sicilia</option>
+                </select>
+                <div class="invalid-feedback">
+                  Inserisci una regione valida.
+                </div>
+              </div>
+    
+              <div class="col-md-3">
+                <label for="gym_city" class="form-label">Città *</label>
+                <input type="text" class="form-control" id="gym_city" placeholder="Roma" [(ngModel)]="gym['city']"
+                  [ngModelOptions]="{standalone: true}" required>
+                <div class="invalid-feedback">
+                  Inserisci una città valida.
+                </div>
+              </div>
+    
+              <div class="col-10">
+                <label for="gym_address" class="form-label">Indirizzo *</label>
+                <input type="text" class="form-control" id="gym_address" placeholder="Via Roma, 1" [(ngModel)]="gym['address']"
+                  [ngModelOptions]="{standalone: true}" required>
+                <div class="invalid-feedback">
+                  Inserisci un indirizzo valido.
+                </div>
+              </div>
+    
+              <div class="col-md-2">
+                <label for="gym_zip" class="form-label">Codice Postale *</label>
+                <input type="text" class="form-control" id="gym_zip" [(ngModel)]="gym['postalCode']"
+                  [ngModelOptions]="{standalone: true}" required>
+                <div class="invalid-feedback">
+                  Inserisci un codice postale valido.
+                </div>
+              </div>
+            </div>
+    
+            <hr class="my-4">
+        </div>
+        <button class="w-100 btn btn-primary btn-lg" type="button" (click)="registerNewUser()">Registrati</button>
+      </form>
+    </div>
+  </div>
+</div>

@@ -4,6 +4,19 @@
             <div class="col-4">
                 <b><span style="font-size: 40px;">UNI-FIT</span></b>
             </div>
+            <div class="col-8 d-flex" style="justify-content: right; align-items: center;">
+                <nav class="nav nav-masthead justify-content-center float-md-end">
+                    <li class="nav-item dropdown ms-3" [hidden]="!root.getIsLogged()">
+                        <button class="btn dropdown-toggle text-white border-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <b>{{root.getCurrentUser().name}} {{root.getCurrentUser().surname}}</b>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" (click)="root.changePage('editUser')">View Profile</a></li>
+                            <li><a class="dropdown-item" (click)="root.logOut()">Log out</a></li>
+                        </ul>
+                    </li>
+                </nav>
+            </div>
         </div>
     </div>
 </div>
