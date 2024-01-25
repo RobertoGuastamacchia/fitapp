@@ -14,4 +14,13 @@ export class HeaderComponent {
   constructor(_root: AppComponent){
     this.root=_root;
   }
+
+  goHome(){
+    if(this.root.isLogged){
+      this.root.changePage("home")
+    }
+    else{      
+      this.root.changePage("login")
+    }
+  }
 }

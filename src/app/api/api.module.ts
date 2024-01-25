@@ -59,21 +59,31 @@ export class APIModule {
   }
 
 
-
-  updateUser(item: User): any {
+  updateGym(item: Gym): any {
     var data = {
-      id: item.id ? item.id : -1,
-      firstName: item.name ? item.name : "",
-      lastName: item.surname ? item.surname : "",
-      email: item.email ? item.email : "",
+      id:item.id?item.id:-1,
+      name: item.name ? item.name : "",
       address: item.address ? item.address : "",
       country: item.country ? item.country : "",
       region: item.region ? item.region : "",
-      birthday: item.birthdate ? item.birthdate : "",
-      pass: item.password ? item.password : "",
       postalCode: item.postalCode ? item.postalCode : "",
-      gender: item.gender ? item.gender : "",
-      isTrainer: item.isTrainer ? item.isTrainer : false,
+      city: item.city ? item.city : "",      
+    };
+    var headerRQS: Header = new Header(header);
+    return this.http.post(apiUrlList + "/updateGym", data, headerRQS.header);
+  }
+
+  updateUser(item: User): any {
+    var data = {
+      id:item.id?item.id:-1,
+      name: item.name ? item.name : "",
+      surname: item.surname ? item.surname : "",
+      address: item.address ? item.address : "",
+      country: item.country ? item.country : "",
+      region: item.region ? item.region : "",
+      password: item.password ? item.password : "",
+      postalCode: item.postalCode ? item.postalCode : "",
+      city: item.city ? item.city : ""
     };
     var headerRQS: Header = new Header(header);
     return this.http.post(apiUrlList + "/updateUser", data, headerRQS.header);
@@ -102,6 +112,14 @@ export class APIModule {
     };
     var headerRQS: Header = new Header(header);
     return this.http.post(apiUrlList + "/login", data, headerRQS.header);
+  }
+
+  getGym(id: string): any {
+    var data = {
+      id: id ? id : -1,
+    };
+    var headerRQS: Header = new Header(header);
+    return this.http.post(apiUrlList + "/getgym", data, headerRQS.header);
   }
 
 

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, RouterLink, RouterModule } from '@angular/router';
-import { User } from '../classes/user';
+import { Gym, User } from '../classes/user';
 import { AppComponent } from '../app.component';
 import { APIModule } from '../api/api.module';
 import { FormsModule } from '@angular/forms';
@@ -26,10 +26,15 @@ export class LoginComponent {
           document.getElementById("email")?.classList.remove("is-invalid");
           document.getElementById("password")?.classList.remove("is-invalid");
           let user = new User(data);
-          this.root.setCurrentUser(user);
-          this.root.setIsLogged(true);
-          this.root.changePage("home")
-          localStorage.setItem("user",JSON.stringify(user))       
+          this.api.getGym(user.idGym).subscribe((data: any) => {
+            this.root.setCurrentUser(user);
+            let gym = new Gym(data);
+            this.root.setCurrentUserGym(gym);
+            this.root.setIsLogged(true);
+            this.root.changePage("home")
+            localStorage.setItem("user",JSON.stringify(user))       
+            localStorage.setItem("gym",JSON.stringify(gym))       
+          })
           }else{
             document.getElementById("email")?.classList.add("is-invalid");
             document.getElementById("password")?.classList.add("is-invalid");

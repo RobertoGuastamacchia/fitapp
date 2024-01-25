@@ -1,7 +1,7 @@
 <div class="bg-primary text-light p-2 shadow shadow-bottom">
     <div class="container">
         <div class="row">
-            <div class="col-4">
+            <div class="col-4" (click)="goHome()" style="cursor: pointer;">
                 <b><span style="font-size: 40px;">UNI-FIT</span></b>
             </div>
             <div class="col-8 d-flex" style="justify-content: right; align-items: center;">
@@ -10,9 +10,9 @@
                         <button class="btn dropdown-toggle text-white border-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <b>{{root.getCurrentUser().name}} {{root.getCurrentUser().surname}}</b>
                         </button>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" (click)="root.changePage('editUser')">View Profile</a></li>
-                            <li><a class="dropdown-item" (click)="root.logOut()">Log out</a></li>
+                        <ul class="dropdown-menu text-center" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" (click)="root.changePage('editUser')">Il Mio Profilo</a></li>
+                            <li><a class="dropdown-item" (click)="root.logOut()">Esci</a></li>
                         </ul>
                     </li>
                 </nav>

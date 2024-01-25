@@ -4,7 +4,7 @@ import { Router, RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
-import { User } from './classes/user';
+import { Gym, User } from './classes/user';
 
 @Component({
   selector: 'app-root',
@@ -16,6 +16,7 @@ import { User } from './classes/user';
 export class AppComponent {
   title = 'fitapp';
   currentUser:User = new User();
+  currentUserGym:Gym = new Gym();
   isLogged = false;
   isLoading = false;
   constructor(private _router: Router) {
@@ -23,6 +24,8 @@ export class AppComponent {
       this.setIsLogged(true);
       var user = new User(JSON.parse(localStorage.getItem("user") as string));
       this.setCurrentUser(user);
+      var gym = new Gym(JSON.parse(localStorage.getItem("gym") as string));
+      this.setCurrentUserGym(gym);
     }
     else{
       this.changePage('login');
@@ -30,13 +33,20 @@ export class AppComponent {
   }
 
   changePage(page :string) { 
-    this._router.navigate([page]);    
+    this._router.navigate([page]);
+    window.scrollTo(0, 0);
   }
   setCurrentUser(user:User){
     this.currentUser=user;
   }
   getCurrentUser(){
     return this.currentUser;
+  }
+  setCurrentUserGym(gym:Gym){
+    this.currentUserGym=gym;
+  }
+  getCurrentUserGym(){
+    return this.currentUserGym;
   }
   startLoading(){
     this.isLoading=true;
