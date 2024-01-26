@@ -1,0 +1,64 @@
+2022-07-14 15:13:31 - Starting C:\Program Files\nodejs\node.exe  F:\Appl\backend\node_modules\node-windows\lib\wrapper.js --file F:\Appl\backend\index.js --scriptoptions= --log "NodeServer wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst false
+2022-07-14 15:13:31 - Started 7028
+2022-07-14 15:15:24 - Starting C:\Program Files\nodejs\node.exe  F:\Appl\backend\node_modules\node-windows\lib\wrapper.js --file F:\Appl\backend\index.js --scriptoptions= --log "NodeServer wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst false
+2022-07-14 15:15:24 - Started 5900
+2022-07-14 15:16:23 - Starting C:\Program Files\nodejs\node.exe  F:\Appl\backend\node_modules\node-windows\lib\wrapper.js --file F:\Appl\backend\index.js --scriptoptions= --log "NodeServer wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst false
+2022-07-14 15:16:23 - Started 4152
+2022-07-14 15:29:38 - Starting C:\Program Files\nodejs\node.exe  F:\Appl\backend\node_modules\node-windows\lib\wrapper.js --file F:\Appl\backend\index.js --scriptoptions= --log "NodeServer wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst false
+2022-07-14 15:29:38 - Started 3808
+2022-07-15 10:32:30 - Starting C:\Program Files\nodejs\node.exe  F:\Appl\backend\node_modules\node-windows\lib\wrapper.js --file F:\Appl\backend\index.js --scriptoptions= --log "NodeServer wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst false
+2022-07-15 10:32:30 - Started 4212
+2022-07-15 10:44:58 - Starting C:\Program Files\nodejs\node.exe  F:\Appl\backend\node_modules\node-windows\lib\wrapper.js --file F:\Appl\backend\index.js --scriptoptions= --log "NodeServer wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst false
+2022-07-15 10:44:58 - Started 2612
+2022-07-15 11:02:05 - Starting C:\Program Files\nodejs\node.exe  F:\Appl\backend\node_modules\node-windows\lib\wrapper.js --file F:\Appl\backend\index.js --scriptoptions= --log "NodeServer wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst false
+2022-07-15 11:02:05 - Started 6032
+2022-07-15 11:06:45 - Starting C:\Program Files\nodejs\node.exe  F:\Appl\backend\node_modules\node-windows\lib\wrapper.js --file F:\Appl\backend\index.js --scriptoptions= --log "NodeServer wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst false
+2022-07-15 11:06:45 - Started 4552
+2022-07-18 16:04:20 - Starting C:\Program Files\nodejs\node.exe  F:\Appl\backend\node_modules\node-windows\lib\wrapper.js --file F:\Appl\backend\index.js --scriptoptions= --log "NodeServer wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst false
+2022-07-18 16:04:20 - Started 4428
+2022-07-19 08:36:49 - Starting C:\Program Files\nodejs\node.exe  F:\Appl\backend\node_modules\node-windows\lib\wrapper.js --file F:\Appl\backend\index.js --scriptoptions= --log "NodeServer wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst false
+2022-07-19 08:36:49 - Started 4260
+2022-07-19 10:29:37 - Starting C:\Program Files\nodejs\node.exe  F:\Appl\backend\node_modules\node-windows\lib\wrapper.js --file F:\Appl\backend\index.js --scriptoptions= --log "NodeServer wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst false
+2022-07-19 10:29:37 - Started 4468
+2022-07-19 10:34:43 - Starting C:\Program Files\nodejs\node.exe  F:\Appl\backend\node_modules\node-windows\lib\wrapper.js --file F:\Appl\backend\index.js --scriptoptions= --log "NodeServer wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst false
+2022-07-19 10:34:43 - Started 4124
+2022-07-19 10:51:33 - Starting C:\Program Files\nodejs\node.exe  F:\Appl\backend\node_modules\node-windows\lib\wrapper.js --file F:\Appl\backend\index.js --scriptoptions= --log "NodeServer wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst false
+2022-07-19 10:51:33 - Started 4468
+2022-07-19 10:55:36 - Starting C:\Program Files\nodejs\node.exe  F:\Appl\backend\node_modules\node-windows\lib\wrapper.js --file F:\Appl\backend\index.js --scriptoptions= --log "NodeServer wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst false
+2022-07-19 10:55:36 - Started 4036
+2022-07-19 11:06:15 - Starting C:\Program Files\nodejs\node.exe  F:\Appl\backend\node_modules\node-windows\lib\wrapper.js --file F:\Appl\backend\index.js --scriptoptions= --log "NodeServer wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst false
+2022-07-19 11:06:15 - Started 4508
+2022-07-19 11:32:23 - Starting C:\Program Files\nodejs\node.exe  F:\Appl\backend\node_modules\node-windows\lib\wrapper.js --file F:\Appl\backend\index.js --scriptoptions= --log "NodeServer wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst false
+2022-07-19 11:32:23 - Started 4448
+2022-07-21 10:06:23 - Starting C:\Program Files\nodejs\node.exe  F:\Appl\backend\node_modules\node-windows\lib\wrapper.js --file F:\Appl\backend\index.js --scriptoptions= --log "NodeServer wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst false
+2022-07-21 10:06:23 - Started 4680
+2022-07-21 17:13:07 - Starting C:\Program Files\nodejs\node.exe  F:\Appl\backend\node_modules\node-windows\lib\wrapper.js --file F:\Appl\backend\index.js --scriptoptions= --log "NodeServer wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst false
+2022-07-21 17:13:08 - Started 4192
+2022-07-26 12:27:43 - Starting C:\Program Files\nodejs\node.exe  F:\Appl\backend\node_modules\node-windows\lib\wrapper.js --file F:\Appl\backend\index.js --scriptoptions= --log "NodeServer wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst false
+2022-07-26 12:27:43 - Started 4204
+2022-07-29 09:28:52 - Starting C:\Program Files\nodejs\node.exe  F:\Appl\backend\node_modules\node-windows\lib\wrapper.js --file F:\Appl\backend\index.js --scriptoptions= --log "NodeServer wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst false
+2022-07-29 09:28:52 - Started 4280
+2022-08-29 10:27:22 - Starting C:\Program Files\nodejs\node.exe  F:\Appl\backend\node_modules\node-windows\lib\wrapper.js --file F:\Appl\backend\index.js --scriptoptions= --log "NodeServer wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst false
+2022-08-29 10:27:22 - Started 4276
+2022-09-28 12:16:54 - Starting C:\Program Files\nodejs\node.exe  F:\Appl\backend\node_modules\node-windows\lib\wrapper.js --file F:\Appl\backend\index.js --scriptoptions= --log "NodeServer wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst false
+2022-09-28 12:16:54 - Started 4164
+2022-10-05 16:41:34 - Starting C:\Program Files\nodejs\node.exe  F:\Appl\backend\node_modules\node-windows\lib\wrapper.js --file F:\Appl\backend\index.js --scriptoptions= --log "NodeServer wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst false
+2022-10-05 16:41:35 - Started 4436
+2022-10-05 17:18:02 - Starting C:\Program Files\nodejs\node.exe  F:\Appl\backend\node_modules\node-windows\lib\wrapper.js --file F:\Appl\backend\index.js --scriptoptions= --log "NodeServer wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst false
+2022-10-05 17:18:02 - Started 4216
+2022-10-06 10:01:26 - Starting C:\Program Files\nodejs\node.exe  F:\Appl\backend\node_modules\node-windows\lib\wrapper.js --file F:\Appl\backend\index.js --scriptoptions= --log "NodeServer wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst false
+2022-10-06 10:01:27 - Started 4652
+2022-10-06 10:24:53 - Starting C:\Program Files\nodejs\node.exe  F:\Appl\backend\node_modules\node-windows\lib\wrapper.js --file F:\Appl\backend\index.js --scriptoptions= --log "NodeServer wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst false
+2022-10-06 10:24:53 - Started 4520
+2022-10-06 10:27:57 - Starting C:\Program Files\nodejs\node.exe  F:\Appl\backend\node_modules\node-windows\lib\wrapper.js --file F:\Appl\backend\index.js --scriptoptions= --log "NodeServer wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst false
+2022-10-06 10:27:57 - Started 3844
+2022-10-11 11:52:10 - Starting C:\Program Files\nodejs\node.exe  F:\Appl\backend\node_modules\node-windows\lib\wrapper.js --file F:\Appl\backend\index.js --scriptoptions= --log "NodeServer wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst false
+2022-10-11 11:52:10 - Started 4412
+2022-12-01 12:05:33 - Starting C:\Program Files\nodejs\node.exe  F:\Appl\backend\node_modules\node-windows\lib\wrapper.js --file F:\Appl\backend\index.js --scriptoptions= --log "NodeServer wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst false
+2022-12-01 12:05:34 - Started 4492
+2022-12-01 14:46:27 - Starting C:\Program Files\nodejs\node.exe  F:\Appl\backend\node_modules\node-windows\lib\wrapper.js --file F:\Appl\backend\index.js --scriptoptions= --log "NodeServer wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst false
+2022-12-01 14:46:29 - Started 4608
+2023-01-12 10:21:18 - Starting C:\Program Files\nodejs\node.exe  F:\Appl\backend\node_modules\node-windows\lib\wrapper.js --file F:\Appl\backend\index.js --scriptoptions= --log "NodeServer wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst false
+2023-01-12 10:21:20 - Started 4608
+2023-01-17 09:43:41 - Starting C:\Program Files\nodejs\node.exe  F:\Appl\backend\node_modules\node-windows\lib\wrapper.js --file F:\Appl\backend\index.js --scriptoptions= --log "NodeServer wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst false
+2023-01-17 09:43:44 - Started 4580

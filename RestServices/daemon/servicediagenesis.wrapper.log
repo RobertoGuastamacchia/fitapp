@@ -1,0 +1,30 @@
+2022-05-18 14:58:02 - Starting C:\Program Files\nodejs\node.exe  C:\backend\backend\node_modules\node-windows\lib\wrapper.js --file C:\backend\backend\index.js --scriptoptions= --log "Service Diagenesis wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst false
+2022-05-18 14:58:02 - Started 5052
+2022-05-18 14:59:58 - Starting C:\Program Files\nodejs\node.exe  C:\backend\backend\node_modules\node-windows\lib\wrapper.js --file C:\backend\backend\index.js --scriptoptions= --log "Service Diagenesis wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst false
+2022-05-18 14:59:58 - Started 6132
+2022-05-18 15:00:01 - Starting C:\Program Files\nodejs\node.exe  C:\backend\backend\node_modules\node-windows\lib\wrapper.js --file C:\backend\backend\index.js --scriptoptions= --log "Service Diagenesis wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst false
+2022-05-18 15:00:01 - Started 732
+2022-05-18 15:01:53 - Starting C:\Program Files\nodejs\node.exe  C:\backend\backend\node_modules\node-windows\lib\wrapper.js --file C:\backend\backend\index.js --scriptoptions= --log "Service Diagenesis wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst false
+2022-05-18 15:01:53 - Started 956
+2022-05-18 15:02:08 - Starting C:\Program Files\nodejs\node.exe  C:\backend\backend\node_modules\node-windows\lib\wrapper.js --file C:\backend\backend\index.js --scriptoptions= --log "Service Diagenesis wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst false
+2022-05-18 15:02:08 - Started 3692
+2022-05-18 15:05:42 - Starting C:\Program Files\nodejs\node.exe  C:\backend\backend\node_modules\node-windows\lib\wrapper.js --file C:\backend\backend\index.js --scriptoptions= --log "Service Diagenesis wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst false
+2022-05-18 15:05:42 - Started 4524
+2022-05-18 15:12:07 - Starting C:\Program Files\nodejs\node.exe  C:\backend\backend\node_modules\node-windows\lib\wrapper.js --file C:\backend\backend\index.js --scriptoptions= --log "Service Diagenesis wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst false
+2022-05-18 15:12:07 - Started 1936
+2022-05-18 15:14:54 - Starting C:\Program Files\nodejs\node.exe  C:\backend\backend\node_modules\node-windows\lib\wrapper.js --file C:\backend\backend\index.js --scriptoptions= --log "Service Diagenesis wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst false
+2022-05-18 15:14:54 - Started 4728
+2022-05-18 15:19:22 - Starting C:\Program Files\nodejs\node.exe  C:\backend\backend\node_modules\node-windows\lib\wrapper.js --file C:\backend\backend\index.js --scriptoptions= --log "Service Diagenesis wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst false
+2022-05-18 15:19:22 - Started 2000
+2022-05-18 15:26:33 - Starting C:\Program Files\nodejs\node.exe  C:\backend\backend\node_modules\node-windows\lib\wrapper.js --file C:\backend\backend\index.js --scriptoptions= --log "Service Diagenesis wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst false
+2022-05-18 15:26:33 - Started 2004
+2022-05-18 15:30:22 - Starting C:\Program Files\nodejs\node.exe  C:\backend\backend\node_modules\node-windows\lib\wrapper.js --file C:\backend\backend\index.js --scriptoptions= --log "Service Diagenesis wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst false
+2022-05-18 15:30:23 - Started 1972
+2022-05-18 15:33:55 - Starting C:\Program Files\nodejs\node.exe  C:\backend\backend\node_modules\node-windows\lib\wrapper.js --file C:\backend\backend\index.js --scriptoptions= --log "Service Diagenesis wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst false
+2022-05-18 15:33:55 - Started 2036
+2022-05-19 09:27:20 - Starting C:\Program Files\nodejs\node.exe  C:\backend\backend\node_modules\node-windows\lib\wrapper.js --file C:\backend\backend\index.js --scriptoptions= --log "Service Diagenesis wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst false
+2022-05-19 09:27:20 - Started 2016
+2022-05-19 09:35:59 - Starting C:\Program Files\nodejs\node.exe  C:\backend\backend\node_modules\node-windows\lib\wrapper.js --file C:\backend\backend\index.js --scriptoptions= --log "Service Diagenesis wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst false
+2022-05-19 09:35:59 - Started 2044
+2022-05-19 16:06:54 - Starting C:\Program Files\nodejs\node.exe  C:\backend\backend\node_modules\node-windows\lib\wrapper.js --file C:\backend\backend\index.js --scriptoptions= --log "Service Diagenesis wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst false
+2022-05-19 16:06:54 - Started 2040
