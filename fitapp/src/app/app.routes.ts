@@ -6,6 +6,7 @@ import { ServicePageComponent } from './service-page/service-page.component';
 import { HomeComponent } from './home/home.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { EserciziComponent } from './esercizi/esercizi.component';
+import { GestioneClientiComponent } from './gestione-clienti/gestione-clienti.component';
 
 
 export const routes: Routes = [
@@ -15,7 +16,8 @@ export const routes: Routes = [
     { path: 'servicepage', component: ServicePageComponent},  
     { path: 'home', component: HomeComponent},  
     { path: 'editUser', component: EditUserComponent},    
-    { path: 'esercizi', component: EserciziComponent},  
+    { path: 'esercizi', component: EserciziComponent},     
+    { path: 'gestioneclienti', component: GestioneClientiComponent}, 
   ];
 NgModule({
     imports: [RouterModule.forRoot(routes,{useHash: true})],
