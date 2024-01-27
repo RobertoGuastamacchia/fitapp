@@ -131,6 +131,13 @@ router.post('/updateGym', isAuth, async (req, res) => {
     })
 });
 
+router.get('/getExercises', isAuth, async (req, res) => {
+    sql = `SELECT * FROM `+dbName+`.Esercizi`;
+    BD.Open(sql).then(function(result){
+        res.json(result);
+    })
+});
+
 
 
 

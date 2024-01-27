@@ -122,6 +122,11 @@ export class APIModule {
     return this.http.post(apiUrlList + "/getgym", data, headerRQS.header);
   }
 
+  getExercises(): any {
+    var headerRQS: Header = new Header(header);
+    return this.http.get(apiUrlList + "/getExercises", headerRQS.header);
+  }
+
 
 
 

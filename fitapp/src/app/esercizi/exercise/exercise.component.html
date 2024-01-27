@@ -1,0 +1,17 @@
+<div class="p-3 popup-muscoli">
+    <h3>{{data.nome}}     <span class="badge bg-danger">{{data.muscoli}}</span></h3>
+    <hr>
+    <div class="w-100 text-center">
+        <img class="popup-image" src="assets/images/{{data.img}}" />
+    </div>
+    <hr>
+    <h5>Descrizione</h5>
+    <p>{{data.descrizione}}</p>
+    <h5>Istruzioni</h5>
+    <p>{{data.istruzioni}}</p>
+    <hr>
+    <h5>Tutorial</h5>
+    <div class="text-cente">
+        <video src="{{data.linkTutorial}}" class="popup-video" type="video/mp4" controls></video>
+    </div>
+</div>

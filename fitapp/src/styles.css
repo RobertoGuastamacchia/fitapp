@@ -1,1 +1,11 @@
-/* You can add global styles to this file, and also import other style files */
+.cardHome:hover div.card-body{
+    background-color: #0ba08c50!important;
+}
+.cardHome:hover div.card-footer{
+    background-color: #0ba08caa  !important;
+}
+.cardHome{
+    cursor: pointer;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
