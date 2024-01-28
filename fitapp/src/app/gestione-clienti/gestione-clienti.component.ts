@@ -71,7 +71,7 @@ export class GestioneClientiComponent {
     dialogRef.afterClosed().subscribe((newUser:User) => {
       newUser.idGym = context.root.getCurrentUserGym().id;
       context.api.addUserToGym(newUser).subscribe(function(r:any){
-        alert("Utente inscritto Correttamente")
+        context.root.showAlert("Utente inscritto Correttamente")
         context.fullUsers.push(newUser)
         context.filterTable()
       })
@@ -88,7 +88,7 @@ export class GestioneClientiComponent {
           let del_u = context.myUsers.findIndex(function(us:User){return u.id==us.id})
           context.fullUsers.splice(del_u,1);
           context.filterTable()
-          alert("Utente rimosso correttamente")
+          context.root.showAlert("Utente rimosso correttamente")
         })
       }
     });

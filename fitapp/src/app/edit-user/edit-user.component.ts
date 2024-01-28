@@ -14,11 +14,12 @@ import {
   MatDialogActions,
   MatDialogClose,
 } from '@angular/material/dialog';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-edit-user',
   standalone: true,
-  imports: [FormsModule,CommonModule,APIModule],
+  imports: [FormsModule,CommonModule,APIModule,RouterModule],
   templateUrl: './edit-user.component.html',
   styleUrl: './edit-user.component.css'
 })
@@ -38,14 +39,14 @@ export class EditUserComponent {
     this.api.updateUser(this.user).subscribe((data: any) => {
       if(this.user.isTrainer){
         this.api.updateGym(this.gym).subscribe((data: any) => {
-          alert("Account succesful modified")
+          this.root.showAlert("Account modificato correttamente")
           this.root.setCurrentUser(this.user);
           this.root.setCurrentUserGym(this.gym)
         })
       }
       else{
         this.root.setCurrentUser(this.user);
-        alert("Account succesful modified")
+        this.root.showAlert("Account modificato correttamente")
       }
     })
   }
@@ -55,7 +56,7 @@ export class EditUserComponent {
     dialogRef.afterClosed().subscribe((ck:any) => {
       if(ck){
         this.api.deleteUser(this.user.id).subscribe((data: any) => {
-          alert("Account succesful deleted")
+          this.root.showAlert("Account modificato correttamente")
           this.root.setCurrentUser(new User());
           this.root.setIsLogged(false);
           this.root.changePage("login");

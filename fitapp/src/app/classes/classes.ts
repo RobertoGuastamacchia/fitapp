@@ -103,17 +103,23 @@ export class GestExercise extends Exercise{
     ripetizioni:any = []
     pesi:any = [] 
     check:any = false
+    playRipetizioni:any
+    playPesi:any
     constructor(dati:any){
         super(dati)
         this.descrizione=""
         this.istruzioni=""
         this.linkTutorial=""
-        this.img=""
-        this.serie = dati.Serie?dati.Serie:null
-        this.ripetizioni = dati.Ripetizioni?dati.Ripetizioni:[]
-        this.pesi = dati.Pesi?dati.Pesi:[]
+        this.img=""        
+        this.check = dati.check
+        this.serie = dati.serie?dati.serie:null
+        this.ripetizioni = dati.ripetizioni?dati.ripetizioni:[]
+        this.pesi = dati.pesi?dati.pesi:[]
+        this.playRipetizioni = dati.playRipetizioni?dati.playRipetizioni:[]
+        this.playPesi = dati.playPesi?dati.playPesi:[]
     }
 }
+
 
 export class Scheda{
     id

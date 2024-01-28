@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { APIModule } from '../api/api.module';
 import { } from '@angular/compiler'
 import { Router } from '@angular/router';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-signup',
@@ -16,9 +17,14 @@ import { Router } from '@angular/router';
 export class SignupComponent {
   public user: User = new User()
   public gym: Gym = new Gym()
+  root;
 
-  constructor(private api: APIModule, private _router: Router) { }
+  constructor(_root:AppComponent,private api: APIModule, private _router: Router) {
+this.root=_root
+   }
   public registerNewUser() {
+    let context = this.root;
+
     this.api.checkUser(this.user.email.toLowerCase()).subscribe((r: any) => {
       if (!r) {
         if (this.checkForm()) {
@@ -37,7 +43,7 @@ export class SignupComponent {
           }
         }
       } else {
-        alert("User already exist, change email and retry.");
+        this.root.showAlert("User already exist, change email and retry.");
         document.getElementById("email")?.classList.add("is-invalid")
       }
     })
@@ -68,7 +74,7 @@ export class SignupComponent {
 
   private _ckInputErr() {
     let regexp = new RegExp(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)
-    alert("Verifica i valori dei campi inseriti.")
+    this.root.showAlert("Verifica i valori dei campi inseriti.")
     if (!this.user.name) {
       document.getElementById("firstName")?.classList.add("is-invalid")
     } else {

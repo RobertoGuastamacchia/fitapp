@@ -187,13 +187,19 @@ router.post('/getGymUsers', isAuth, async (req, res) => {
 });
 
 router.post('/createScheda', isAuth, async (req, res) => {
-    let idTrainer = req.body.idTrainer;
+    let idTrainer = null
+    if(req.body.idTrainer)
+        idTrainer= req.body.idTrainer;
     let idPalestra = req.body.idPalestra;
     let idCliente = req.body.idCliente;
     let startDate = req.body.dataInizio;
     let endDate = req.body.dataFine;
     let name = req.body.nome;
-    sql = `INSERT INTO `+dbName+`.schede (ID_Palestra,ID_Cliente,Data_inizio,Data_fine,Nome,ID_Trainer) VALUES(${idPalestra},${idCliente},"${startDate}","${endDate}","${name}",${idTrainer})`;
+    if(req.body.idTrainer)
+        sql = `INSERT INTO `+dbName+`.schede (ID_Palestra,ID_Cliente,Data_inizio,Data_fine,Nome,ID_Trainer) VALUES(${idPalestra},${idCliente},"${startDate}","${endDate}","${name}",${idTrainer})`;
+    else
+        sql = `INSERT INTO `+dbName+`.schede (ID_Palestra,ID_Cliente,Data_inizio,Data_fine,Nome) VALUES(${idPalestra},${idCliente},"${startDate}","${endDate}","${name}")`;
+
     console.log(sql)
     BD.Open(sql).then(function(result){
         res.json(result);
@@ -202,7 +208,16 @@ router.post('/createScheda', isAuth, async (req, res) => {
 
 router.post('/userSchede', isAuth, async (req, res) => {
     let id = req.body.id;
-    sql = `Select * FROM  `+dbName+`.schede where ID_Cliente  = ${id}`;
+    sql = `Select * FROM  `+dbName+`.schede where ID_Cliente  = ${id} order by Data_Inizio desc`;
+    console.log(sql)
+    BD.Open(sql).then(function(result){
+        res.json(result);
+    })
+});
+
+router.post('/userSchedeActive', isAuth, async (req, res) => {
+    let id = req.body.id;
+    sql = `Select * FROM  `+dbName+`.schede where ID_Cliente  = ${id} and Data_Fine >= '${new Date().toISOString()}' order by Data_Inizio desc`;
     console.log(sql)
     BD.Open(sql).then(function(result){
         res.json(result);
@@ -219,9 +234,50 @@ router.post('/saveScheda', isAuth, async (req, res) => {
     })
 });
 
+router.post('/saveSchedaWork', isAuth, async (req, res) => {
+    let id = req.body.id;
+    let json = req.body.json;
+    let date = req.body.date;
+    sql = `Insert into  `+dbName+`.workout (ID_Scheda,JSON,Data) Values(${id},'${json}',"${date}")`;
+    //console.log(sql)
+    BD.Open(sql).then(function(result){
+        res.json(result);
+    })
+});
+
+router.post('/updateSchedaWork', isAuth, async (req, res) => {
+    let id = req.body.id;
+    let json = req.body.json;
+    let date = req.body.date;
+    sql = `Update  `+dbName+`.workout Set JSON='${json}' where ID_Scheda=${id} and Data="${date}"`;
+    //console.log(sql)
+    BD.Open(sql).then(function(result){
+        res.json(result);
+    })
+});
+
+router.post('/checkSchedaWork', isAuth, async (req, res) => {
+    let id = req.body.id;
+    let date = req.body.date;
+    sql = `Select * from `+dbName+`.workout where ID_Scheda=${id} and Data="${date}"`;
+    //console.log(sql)
+    BD.Open(sql).then(function(result){
+        res.json(result);
+    })
+});
+
 router.post('/getScheda', isAuth, async (req, res) => {
     let id = req.body.id;
     sql = `Select * from `+dbName+`.schede where ID_Scheda = ${id}`;
+    console.log(sql)
+    BD.Open(sql).then(function(result){
+        res.json(result);
+    })
+});
+
+router.post('/getExercise', isAuth, async (req, res) => {
+    let id = req.body.id;
+    sql = `Select * from `+dbName+`.Esercizi where ID_Esercizio = ${id}`;
     console.log(sql)
     BD.Open(sql).then(function(result){
         res.json(result);

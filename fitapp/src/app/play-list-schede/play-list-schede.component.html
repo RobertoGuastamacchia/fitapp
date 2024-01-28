@@ -2,11 +2,10 @@
 
     <div class="row">
         <div class="col-12">
-            <h1>Gestione Schede</h1>
+            <h1>Seleziona Scheda Work-Day</h1>
             <hr>
             <div class="col-12 text-end">
                 <button class="btn btn-dark btn-sm me-2" [routerLink]="['/home']">Indietro</button>
-                <button class="btn btn-primary btn-sm" (click)="openDialogCreateScheda()">+ Crea Scheda</button>
             </div>
             <hr>
             <div class="col-12">
@@ -22,11 +21,9 @@
                         <tbody>
                             <tr *ngFor="let s of schede">
                                 <td>
-                                    <button class="btn btn-danger btn-sm" (click)="openConfirmToRemove(s)"><i
-                                            class="bi bi-trash-fill"></i></button>
-                                    <button class="btn btn-primary btn-sm ms-2"
-                                        [routerLink]="['/modificascheda',s.idCliente,s.id]"><i
-                                            class="bi bi-pencil-square"></i></button>
+                                    <button class="btn btn-primary btn-sm"
+                                        [routerLink]="['/playscheda',root.getCurrentUser().id,s.id]"><i
+                                            class="bi bi-play-fill"></i></button>
                                 </td>
                                 <td>{{s.nome}}</td>
                                 <td>{{s.dataInizio}}</td>

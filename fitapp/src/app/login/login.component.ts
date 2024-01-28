@@ -38,14 +38,14 @@ export class LoginComponent {
           }else{
             document.getElementById("email")?.classList.add("is-invalid");
             document.getElementById("password")?.classList.add("is-invalid");
-            alert("Email e/o password non valida, riprova.")            
+            this.root.showAlert("Email e/o password non valida, riprova.")            
           }   
         });
       }
       else{
         document.getElementById("email")?.classList.add("is-invalid");
         document.getElementById("password")?.classList.add("is-invalid");
-        alert("email e/o password non valida, riprova.")
+        this.root.showAlert("email e/o password non valida, riprova.")
       }
   }
 }

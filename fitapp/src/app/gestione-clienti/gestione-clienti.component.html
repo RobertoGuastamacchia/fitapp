@@ -1,150 +1,164 @@
-<div class="row">
-    <div class="col-12">
-        <h1>Gestione Clienti</h1>
-    </div>
-    <hr>
-    <div class="col-12 text-end mb-3">
-        <button type="button" class="btn btn-sm btn-outline-success" (click)="openDialogAddUser()">Aggiungi</button>
-    </div>
-    <hr>
-    <div class="col-12">
-        <div class="table-responsive">
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th>
-                            <div class="float-start h-100"><span>Nome</span></div>
-                            <div class="float-end h-100">
-                                <button type="button" mat-button class="border-0 rounded-0 btn"
-                                    (click)="sortTable('name')">
-                                    <i *ngIf="!sortColumn || (sortColumn && sortColumn!.field!='name')"
-                                        class="bi bi-arrow-down-up"></i>
-                                    <i *ngIf="sortColumn && sortColumn!.field=='name' && sortOrder=='asc'"
-                                        class="bi bi-arrow-up"></i>
-                                    <i *ngIf="sortColumn && sortColumn!.field=='name' && sortOrder=='desc'"
-                                        class="bi bi-arrow-down"></i>
-                                </button>
-                            </div>
-                            <div class="float-end h-100">
-                                <button type="button" class="rounded-0 border-0 btn" mat-button
-                                    [matMenuTriggerFor]="menu">
-                                    <i class="bi bi-funnel" *ngIf="!filters['name'].active"></i>
-                                    <i class="bi bi-funnel-fill" *ngIf="filters['name'].active"></i>
-                                </button>
-                                <mat-menu #menu="matMenu" class="rounded-0" style="height: 100px;">
-                                    <div (click)="$event.stopPropagation();">
-                                        <div class="p-2" style="font-size: 10px;">
-                                            <mat-form-field class="w-100">
-                                                <mat-label>Nome</mat-label>
-                                                <input matInput class="w-100" type="text"
-                                                    [(ngModel)]="filters['name']['value']" (change)="filterTable()" />
-                                                <i matIconPrefix class="bi bi-funnel ms-2"></i>
-                                            </mat-form-field>
+<div class="p-3 shadow">
+    <div class="row">
+        <div class="col-12">
+            <h1>Gestione Clienti</h1>
+        </div>
+        <hr>
+        <div class="col-12 text-end mb-3">
+            <button class="btn btn-dark btn-sm me-2" [routerLink]="['/home']">Indietro</button>
+            <button type="button" class="btn btn-sm btn-outline-success" (click)="openDialogAddUser()">Aggiungi</button>
+        </div>
+        <hr>
+        <div class="col-12">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>
+                                <div class="float-start h-100"><span>Nome</span></div>
+                                <div class="float-end h-100">
+                                    <button type="button" mat-button class="border-0 rounded-0 btn"
+                                        (click)="sortTable('name')">
+                                        <i *ngIf="!sortColumn || (sortColumn && sortColumn!.field!='name')"
+                                            class="bi bi-arrow-down-up"></i>
+                                        <i *ngIf="sortColumn && sortColumn!.field=='name' && sortOrder=='asc'"
+                                            class="bi bi-arrow-up"></i>
+                                        <i *ngIf="sortColumn && sortColumn!.field=='name' && sortOrder=='desc'"
+                                            class="bi bi-arrow-down"></i>
+                                    </button>
+                                </div>
+                                <div class="float-end h-100">
+                                    <button type="button" class="rounded-0 border-0 btn" mat-button
+                                        [matMenuTriggerFor]="menu">
+                                        <i class="bi bi-funnel" *ngIf="!filters['name'].active"></i>
+                                        <i class="bi bi-funnel-fill" *ngIf="filters['name'].active"></i>
+                                    </button>
+                                    <mat-menu #menu="matMenu" class="rounded-0" style="height: 100px;">
+                                        <div (click)="$event.stopPropagation();">
+                                            <div class="p-2" style="font-size: 10px;">
+                                                <mat-form-field class="w-100">
+                                                    <mat-label>Nome</mat-label>
+                                                    <input matInput class="w-100" type="text"
+                                                        [(ngModel)]="filters['name']['value']"
+                                                        (change)="filterTable()" />
+                                                    <i matIconPrefix class="bi bi-funnel ms-2"></i>
+                                                </mat-form-field>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="w-100 p-1">
-                                        <button type="button" class="btn btn-sm btn-outline-dark w-100"
-                                            (click)="clearFilter('name')">Clear</button>
-                                    </div>
-                                </mat-menu>
-                            </div>
-                        </th>
-                        <th>
-                            <div class="float-start h-100"><span>Cognome</span></div>
-                            <div class="float-end h-100">
-                                <button type="button" mat-button class="border-0 rounded-0 btn"
-                                    (click)="sortTable('surname')">
-                                    <i *ngIf="!sortColumn || (sortColumn && sortColumn!.field!='surname')"
-                                        class="bi bi-arrow-down-up"></i>
-                                    <i *ngIf="sortColumn && sortColumn!.field=='surname' && sortOrder=='asc'"
-                                        class="bi bi-arrow-up"></i>
-                                    <i *ngIf="sortColumn && sortColumn!.field=='surname' && sortOrder=='desc'"
-                                        class="bi bi-arrow-down"></i>
-                                </button>
-                            </div>
-                            <div class="float-end h-100">
-                                <button type="button" class="rounded-0 border-0 btn" mat-button
-                                    [matMenuTriggerFor]="surname">
-                                    <i class="bi bi-funnel" *ngIf="!filters['surname'].active"></i>
-                                    <i class="bi bi-funnel-fill" *ngIf="filters['surname'].active"></i>
-                                </button>
-                                <mat-menu #surname="matMenu" class="rounded-0" style="height: 100px;">
-                                    <div (click)="$event.stopPropagation();">
-                                        <div class="p-2" style="font-size: 10px;">
-                                            <mat-form-field class="w-100">
-                                                <mat-label>Cognome</mat-label>
-                                                <input matInput class="w-100" type="text"
-                                                    [(ngModel)]="filters['surname']['value']"
-                                                    (change)="filterTable()" />
-                                                <i matIconPrefix class="bi bi-funnel ms-2"></i>
-                                            </mat-form-field>
+                                        <div class="w-100 p-1">
+                                            <button type="button" class="btn btn-sm btn-outline-dark w-100"
+                                                (click)="clearFilter('name')">Clear</button>
                                         </div>
-                                    </div>
-                                    <div class="w-100 p-1">
-                                        <button type="button" class="btn btn-sm btn-outline-dark w-100"
-                                            (click)="clearFilter('surname')">Clear</button>
-                                    </div>
-                                </mat-menu>
-                            </div>
-                        </th>
-                        <th><div class="float-start h-100" style="justify-content: center; display: flex; min-height: 35px;"><span>Data di nascita</span></div></th>
-                        <th><div class="float-start h-100" style="justify-content: center; display: flex; min-height: 35px;"><span>Sesso</span></div></th>
-                        <th>
-                            <div class="float-start h-100"><span>Email</span></div>
-                            <div class="float-end h-100">
-                                <button type="button" mat-button class="border-0 rounded-0 btn"
-                                    (click)="sortTable('email')">
-                                    <i *ngIf="!sortColumn || (sortColumn && sortColumn!.field!='email')"
-                                        class="bi bi-arrow-down-up"></i>
-                                    <i *ngIf="sortColumn && sortColumn!.field=='email' && sortOrder=='asc'"
-                                        class="bi bi-arrow-up"></i>
-                                    <i *ngIf="sortColumn && sortColumn!.field=='email' && sortOrder=='desc'"
-                                        class="bi bi-arrow-down"></i>
-                                </button>
-                            </div>
-                            <div class="float-end h-100">
-                                <button type="button" class="rounded-0 border-0 btn" mat-button
-                                    [matMenuTriggerFor]="email">
-                                    <i class="bi bi-funnel" *ngIf="!filters['email'].active"></i>
-                                    <i class="bi bi-funnel-fill" *ngIf="filters['email'].active"></i>
-                                </button>
-                                <mat-menu #email="matMenu" class="rounded-0" style="height: 100px;">
-                                    <div (click)="$event.stopPropagation();">
-                                        <div class="p-2" style="font-size: 10px;">
-                                            <mat-form-field class="w-100">
-                                                <mat-label>Email</mat-label>
-                                                <input matInput class="w-100" type="text"
-                                                    [(ngModel)]="filters['email']['value']" (change)="filterTable()" />
-                                                <i matIconPrefix class="bi bi-funnel ms-2"></i>
-                                            </mat-form-field>
+                                    </mat-menu>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="float-start h-100"><span>Cognome</span></div>
+                                <div class="float-end h-100">
+                                    <button type="button" mat-button class="border-0 rounded-0 btn"
+                                        (click)="sortTable('surname')">
+                                        <i *ngIf="!sortColumn || (sortColumn && sortColumn!.field!='surname')"
+                                            class="bi bi-arrow-down-up"></i>
+                                        <i *ngIf="sortColumn && sortColumn!.field=='surname' && sortOrder=='asc'"
+                                            class="bi bi-arrow-up"></i>
+                                        <i *ngIf="sortColumn && sortColumn!.field=='surname' && sortOrder=='desc'"
+                                            class="bi bi-arrow-down"></i>
+                                    </button>
+                                </div>
+                                <div class="float-end h-100">
+                                    <button type="button" class="rounded-0 border-0 btn" mat-button
+                                        [matMenuTriggerFor]="surname">
+                                        <i class="bi bi-funnel" *ngIf="!filters['surname'].active"></i>
+                                        <i class="bi bi-funnel-fill" *ngIf="filters['surname'].active"></i>
+                                    </button>
+                                    <mat-menu #surname="matMenu" class="rounded-0" style="height: 100px;">
+                                        <div (click)="$event.stopPropagation();">
+                                            <div class="p-2" style="font-size: 10px;">
+                                                <mat-form-field class="w-100">
+                                                    <mat-label>Cognome</mat-label>
+                                                    <input matInput class="w-100" type="text"
+                                                        [(ngModel)]="filters['surname']['value']"
+                                                        (change)="filterTable()" />
+                                                    <i matIconPrefix class="bi bi-funnel ms-2"></i>
+                                                </mat-form-field>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="w-100 p-1">
-                                        <button type="button" class="btn btn-sm btn-outline-dark w-100"
-                                            (click)="clearFilter('email')">Clear</button>
-                                    </div>
-                                </mat-menu>
-                            </div>
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let u of myUsers">
-                        <td>
-                            <button title="rimuovi cliente" type="button" class="btn btn-sm btn-danger border-0"
-                                (click)="openConfirmToRemove(u)"><i class="bi bi-person-dash"></i></button>
-                            <button title="gestione schede cliente" type="button"
-                                class="btn btn-sm btn-warning border-0 ms-2" [routerLink]="['/gestioneschede',u.id]"><i class="bi bi-journal-text"></i></button>
-                        </td>
-                        <td>{{u.name}}</td>
-                        <td>{{u.surname}}</td>
-                        <td>{{u.birthdate}}</td>
-                        <td>{{u.gender=='m'?'M':'F'}}</td>
-                        <td>{{u.email}}</td>
-                    </tr>
-                </tbody>
-            </table>
+                                        <div class="w-100 p-1">
+                                            <button type="button" class="btn btn-sm btn-outline-dark w-100"
+                                                (click)="clearFilter('surname')">Clear</button>
+                                        </div>
+                                    </mat-menu>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="float-start h-100"
+                                    style="justify-content: center; display: flex; min-height: 35px;"><span>Data di
+                                        nascita</span></div>
+                            </th>
+                            <th>
+                                <div class="float-start h-100"
+                                    style="justify-content: center; display: flex; min-height: 35px;"><span>Sesso</span>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="float-start h-100"><span>Email</span></div>
+                                <div class="float-end h-100">
+                                    <button type="button" mat-button class="border-0 rounded-0 btn"
+                                        (click)="sortTable('email')">
+                                        <i *ngIf="!sortColumn || (sortColumn && sortColumn!.field!='email')"
+                                            class="bi bi-arrow-down-up"></i>
+                                        <i *ngIf="sortColumn && sortColumn!.field=='email' && sortOrder=='asc'"
+                                            class="bi bi-arrow-up"></i>
+                                        <i *ngIf="sortColumn && sortColumn!.field=='email' && sortOrder=='desc'"
+                                            class="bi bi-arrow-down"></i>
+                                    </button>
+                                </div>
+                                <div class="float-end h-100">
+                                    <button type="button" class="rounded-0 border-0 btn" mat-button
+                                        [matMenuTriggerFor]="email">
+                                        <i class="bi bi-funnel" *ngIf="!filters['email'].active"></i>
+                                        <i class="bi bi-funnel-fill" *ngIf="filters['email'].active"></i>
+                                    </button>
+                                    <mat-menu #email="matMenu" class="rounded-0" style="height: 100px;">
+                                        <div (click)="$event.stopPropagation();">
+                                            <div class="p-2" style="font-size: 10px;">
+                                                <mat-form-field class="w-100">
+                                                    <mat-label>Email</mat-label>
+                                                    <input matInput class="w-100" type="text"
+                                                        [(ngModel)]="filters['email']['value']"
+                                                        (change)="filterTable()" />
+                                                    <i matIconPrefix class="bi bi-funnel ms-2"></i>
+                                                </mat-form-field>
+                                            </div>
+                                        </div>
+                                        <div class="w-100 p-1">
+                                            <button type="button" class="btn btn-sm btn-outline-dark w-100"
+                                                (click)="clearFilter('email')">Clear</button>
+                                        </div>
+                                    </mat-menu>
+                                </div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let u of myUsers">
+                            <td>
+                                <button title="rimuovi cliente" type="button" class="btn btn-sm btn-danger border-0"
+                                    (click)="openConfirmToRemove(u)"><i class="bi bi-person-dash"></i></button>
+                                <button title="gestione schede cliente" type="button"
+                                    class="btn btn-sm btn-warning border-0 ms-2"
+                                    [routerLink]="['/gestioneschede',u.id]"><i class="bi bi-journal-text"></i></button>
+                            </td>
+                            <td>{{u.name}}</td>
+                            <td>{{u.surname}}</td>
+                            <td>{{u.birthdate}}</td>
+                            <td>{{u.gender=='m'?'M':'F'}}</td>
+                            <td>{{u.email}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>

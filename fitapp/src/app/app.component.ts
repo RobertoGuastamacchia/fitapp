@@ -5,7 +5,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { Gym, User } from './classes/classes';
-
+import * as bootstrap from "bootstrap";
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -18,6 +18,7 @@ export class AppComponent {
   currentUser:User = new User();
   currentUserGym:Gym = new Gym();
   isLogged = false;
+  message = "";
   isLoading = false;
   constructor(private _router: Router) {
     if(localStorage.getItem("user")){
@@ -30,6 +31,13 @@ export class AppComponent {
     else{
       this.changePage('login');
     }
+  }
+
+  showAlert(message:string){
+    this.message=message;
+    const toastLiveExample = document.getElementById('liveToast')
+    const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample!)
+    toastBootstrap.show()    
   }
 
   changePage(page :string) { 

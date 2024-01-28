@@ -5,8 +5,8 @@
             <h1>Modifica Scheda</h1>
             <hr>
             <div class="text-end">
-                <button class="btn btn-dark btn-sm" [routerLink]="['/gestioneschede',idCliente]">Indietro</button>
-                <button class="btn btn-success btn-sm ms-2" (click)="saveScheda()">Salva</button>
+                <button class="btn btn-success btn-sm me-2" (click)="saveWorkDay()">Salva</button>
+                <button class="btn btn-dark btn-sm" [routerLink]="['/playlistschede',idCliente]">Indietro</button>
             </div>
             <hr>
         </div>
@@ -22,11 +22,8 @@
                             <th scope="col" style="min-width: 250px;">
                                 <div class="float-start h-100"><span>Fascia Muscolare</span></div>
                             </th>
-                            <th style="border-left: 1px solid;min-width: 200px;">
-                                Active
-                            </th>
                             <th style="min-width: 200px;">
-                                N° Serie
+                                Info Scheda:
                             </th>
                             <th style="min-width: 200px;">
                                 N° Ripetizioni
@@ -43,40 +40,39 @@
                             <td>{{e.nome}}</td>
                             <td>{{e.muscoli}}</td>
                             <td style="border-left: 1px solid">
-                                <div class="form-check text-center">
-                                    <input class="form-check-input" type="checkbox" [(ngModel)]="e.check">
-                                </div>
-                            </td>
-                            <td>
-                                <input class="form-control" type="number" [(ngModel)]="e.serie" [disabled]="!e.check"
-                                    min="0" max="6">
+                                <span>Numero Serie:</span>&nbsp;&nbsp;<b>{{e.serie}}</b><br>
+                                <span>Numero Ripetizioni:</span>&nbsp;&nbsp;<b
+                                    *ngFor="let i of e.ripetizioni ; index as ind "><span
+                                        *ngIf="ind!=0">-</span>{{i}}</b><br>
+                                <span>Pesi:</span>&nbsp;&nbsp;<b *ngFor="let i of e.pesi ; index as ind "><span
+                                        *ngIf="ind!=0">-</span>{{i}}</b><br>
                             </td>
                             <td>
                                 <input *ngIf="e.serie>0" class="form-control" type="number"
-                                    [(ngModel)]="e.ripetizioni[0]" [disabled]="!e.check">
+                                    [(ngModel)]="e.playRipetizioni[0]" [disabled]="!e.check">
                                 <input *ngIf="e.serie>1" class="form-control" type="number"
-                                    [(ngModel)]="e.ripetizioni[1]" [disabled]="!e.check">
+                                    [(ngModel)]="e.playRipetizioni[1]" [disabled]="!e.check">
                                 <input *ngIf="e.serie>2" class="form-control" type="number"
-                                    [(ngModel)]="e.ripetizioni[2]" [disabled]="!e.check">
+                                    [(ngModel)]="e.playRipetizioni[2]" [disabled]="!e.check">
                                 <input *ngIf="e.serie>3" class="form-control" type="number"
-                                    [(ngModel)]="e.ripetizioni[3]" [disabled]="!e.check">
+                                    [(ngModel)]="e.playRipetizioni[3]" [disabled]="!e.check">
                                 <input *ngIf="e.serie>4" class="form-control" type="number"
-                                    [(ngModel)]="e.ripetizioni[4]" [disabled]="!e.check">
+                                    [(ngModel)]="e.playRipetizioni[4]" [disabled]="!e.check">
                                 <input *ngIf="e.serie>5" class="form-control" type="number"
-                                    [(ngModel)]="e.ripetizioni[5]" [disabled]="!e.check">
+                                    [(ngModel)]="e.playRipetizioni[5]" [disabled]="!e.check">
                             </td>
                             <td>
-                                <input *ngIf="e.serie>0" class="form-control" type="number" [(ngModel)]="e.pesi[0]"
+                                <input *ngIf="e.serie>0" class="form-control" type="number" [(ngModel)]="e.playPesi[0]"
                                     [disabled]="!e.check">
-                                <input *ngIf="e.serie>1" class="form-control" type="number" [(ngModel)]="e.pesi[1]"
+                                <input *ngIf="e.serie>1" class="form-control" type="number" [(ngModel)]="e.playPesi[1]"
                                     [disabled]="!e.check">
-                                <input *ngIf="e.serie>2" class="form-control" type="number" [(ngModel)]="e.pesi[2]"
+                                <input *ngIf="e.serie>2" class="form-control" type="number" [(ngModel)]="e.playPesi[2]"
                                     [disabled]="!e.check">
-                                <input *ngIf="e.serie>3" class="form-control" type="number" [(ngModel)]="e.pesi[3]"
+                                <input *ngIf="e.serie>3" class="form-control" type="number" [(ngModel)]="e.playPesi[3]"
                                     [disabled]="!e.check">
-                                <input *ngIf="e.serie>4" class="form-control" type="number" [(ngModel)]="e.pesi[4]"
+                                <input *ngIf="e.serie>4" class="form-control" type="number" [(ngModel)]="e.playPesi[4]"
                                     [disabled]="!e.check">
-                                <input *ngIf="e.serie>5" class="form-control" type="number" [(ngModel)]="e.pesi[5]"
+                                <input *ngIf="e.serie>5" class="form-control" type="number" [(ngModel)]="e.playPesi[5]"
                                     [disabled]="!e.check">
                             </td>
                         </tr>

@@ -16,11 +16,12 @@ import {
   MatDialogActions,
   MatDialogClose,
 } from '@angular/material/dialog';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-esercizi',
   standalone: true,
-  imports: [APIModule,FormsModule,CommonModule,MatButtonModule,MatMenuModule,MatInputModule],
+  imports: [APIModule,FormsModule,CommonModule,MatButtonModule,MatMenuModule,MatInputModule,RouterModule],
   templateUrl: './esercizi.component.html',
   styleUrl: './esercizi.component.css'
 })

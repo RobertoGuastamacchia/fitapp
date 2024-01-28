@@ -65,7 +65,7 @@ export class GestioneSchedeComponent {
           scheda.id=r.insertId;
           context.fullSchede.push(scheda)
           context.schede = [...context.fullSchede]
-          alert("Scheda creata correttamente")
+          context.root.showAlert("Scheda creata correttamente")
         })
       }
     });
@@ -80,7 +80,7 @@ export class GestioneSchedeComponent {
           let del_u = context.fullSchede.findIndex(function(us:Scheda){return us.id==us.id})
           context.fullSchede.splice(del_u,1);
           context.schede= [...context.fullSchede]
-          alert("Scheda eliminata correttamente")
+          context.root.showAlert("Scheda eliminata correttamente")
         })
       }
     });

@@ -66,6 +66,7 @@ export class ModificaSchedeComponent {
       console.log(this.exes);
     })
   }
+
   ngOnInit(){
     this.idScheda = parseInt(this.route.snapshot.paramMap.get('id') as string);
     this.idCliente = parseInt(this.route.snapshot.paramMap.get('idCliente') as string);
@@ -74,6 +75,7 @@ export class ModificaSchedeComponent {
     this.api.getScheda(this.idScheda).subscribe(function(r:any){
       if(r.length>0 && r[0].JSON){
         context.exes = JSON.parse(r[0].JSON) as GestExercise[]
+        context.fullexes = JSON.parse(r[0].JSON) as GestExercise[]
       }
     })
   }
@@ -153,8 +155,9 @@ export class ModificaSchedeComponent {
   }
 
   saveScheda(){
+    let context = this.root;
     this.api.saveScheda(this.idScheda,this.exes).subscribe(function(r:any){
-      alert("Scheda salvata correttamente")
+      context.showAlert("Scheda salvata correttamente")
     })
   }
 
