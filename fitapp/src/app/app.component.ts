@@ -27,6 +27,8 @@ export class AppComponent {
       this.setCurrentUser(user);
       var gym = new Gym(JSON.parse(localStorage.getItem("gym") as string));
       this.setCurrentUserGym(gym);
+      this.changePage('home');
+
     }
     else{
       this.changePage('login');
