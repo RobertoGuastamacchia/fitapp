@@ -139,6 +139,76 @@ router.get('/getExercises', isAuth, async (req, res) => {
 });
 
 
+router.get('/getFreeUsers', isAuth, async (req, res) => {
+    sql = `SELECT * FROM `+dbName+`.Utenti where ID_Palestra is null`;
+    BD.Open(sql).then(function(result){
+        res.json(result);
+    })
+});
+
+router.post('/addUserToGym', isAuth, async (req, res) => {
+    console.log("echo:",req.body);
+    let idUtente = req.body.id;
+    let idPalestra = req.body.idGym;
+    sql = `UPDATE `+dbName+`.Utenti SET ID_Palestra=${idPalestra} where ID_UTENTE=${idUtente}`;
+    BD.Open(sql).then(function(result){
+        res.json(result);
+    })
+});
+
+
+router.post('/removeUserToGym', isAuth, async (req, res) => {
+    console.log("echo:",req.body);
+    let idUtente = req.body.id;
+    sql = `UPDATE `+dbName+`.Utenti SET ID_Palestra=null where ID_UTENTE=${idUtente}`;
+    BD.Open(sql).then(function(result){
+        res.json(result);
+    })
+});
+
+router.post('/removeUserScheda', isAuth, async (req, res) => {
+    console.log("echo:",req.body);
+    let idScheda = req.body.id;
+    sql = `Delete From `+dbName+`.schede where ID_Scheda=${idScheda}`;
+    BD.Open(sql).then(function(result){
+        res.json(result);
+    })
+});
+
+
+router.post('/getGymUsers', isAuth, async (req, res) => {
+    console.log("echo:",req.body);
+    let idTrainer = req.body.id;
+    let idPalestra = req.body.idGym;
+    sql = `SELECT * FROM `+dbName+`.Utenti WHERE ID_Palestra=${idPalestra} and ID_UTENTE != ${idTrainer}`;
+    BD.Open(sql).then(function(result){
+        res.json(result);
+    })
+});
+
+router.post('/createScheda', isAuth, async (req, res) => {
+    let idTrainer = req.body.idTrainer;
+    let idPalestra = req.body.idPalestra;
+    let idCliente = req.body.idCliente;
+    let startDate = req.body.dataInizio;
+    let endDate = req.body.dataFine;
+    let name = req.body.nome;
+    sql = `INSERT INTO `+dbName+`.schede (ID_Palestra,ID_Cliente,Data_inizio,Data_fine,Nome,ID_Trainer) VALUES(${idPalestra},${idCliente},"${startDate}","${endDate}","${name}",${idTrainer})`;
+    console.log(sql)
+    BD.Open(sql).then(function(result){
+        res.json(result);
+    })
+});
+
+router.post('/userSchede', isAuth, async (req, res) => {
+    let id = req.body.id;
+    sql = `Select * FROM  `+dbName+`.schede where ID_Cliente  = ${id}`;
+    console.log(sql)
+    BD.Open(sql).then(function(result){
+        res.json(result);
+    })
+});
+
 
 
 function isAuth(req, res, next) {
@@ -155,375 +225,3 @@ function isAuth(req, res, next) {
 module.exports = router;
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-
-router.post('/addArticle', isAuth, async (req, res) => {
-    console.log("echo:",req.body);
-    let sql = "";
-    let datepublished = req.body.datepublished;
-    let datemodified = req.body.datemodified;
-    let metadata = req.body.metadata;
-    let status = req.body.status;
-    let statusText = req.body.statusText;
-    let source = req.body.source;
-    let url = req.body.url;
-    if(datepublished && datemodified)
-        sql = "INSERT INTO "+dbName+".Articoli (DatePublished,DateModified,Metadata,Status,StatusText,Fonte,Url) VALUES ('"+datepublished+"','"+datemodified+"', '"+metadata.replaceAll("'","''")+"', "+status+", '"+statusText.replaceAll("'","''")+"', '"+source+"', '"+url+"')";
-    if(datepublished && !datemodified)
-        sql = "INSERT INTO "+dbName+".Articoli (DatePublished,Metadata,Status,StatusText,Fonte,Url) VALUES ('"+datepublished+"', '"+metadata.replaceAll("'","''")+"', "+status+", '"+statusText.replaceAll("'","''")+"', '"+source+"', '"+url+"')";
-    else if(!datepublished && datemodified)
-        sql = "INSERT INTO "+dbName+".Articoli (DateModified,Metadata,Status,StatusText,Fonte,Url) VALUES ('"+datemodified+"','"+metadata.replaceAll("'","''")+"', "+status+", '"+statusText.replaceAll("'","''")+"', '"+source+"', '"+url+"')";
-    else
-        sql = "INSERT INTO "+dbName+".Articoli (Metadata,Status,StatusText,Fonte,Url) VALUES ('"+metadata.replaceAll("'","''")+"', "+status+", '"+statusText.replaceAll("'","''")+"', '"+source+"', '"+url+"')";
-
-    BD.Open(sql).then(function(result){
-        res.json(result);
-    })
-});
-
-router.post('/addImage', isAuth, async (req, res) => {
-    //console.log("echo:",req.body);
-    let sql = "";
-    let datecrated = req.body.datecrated;
-    let datemodified = req.body.datemodified;
-    let metadata = req.body.metadata;
-    let code = req.body.code;
-    let similar = req.body.similar;
-    let labels = req.body.labels;
-    let racy = req.body.racy;
-    let violence = req.body.violence;
-    let spoof = req.body.spoof;
-    let medical = req.body.medical;
-    let adult = req.body.adult;
-    if(datecrated && datemodified)
-        sql = "INSERT INTO "+dbName+".Immagini (CreatedDate,DateModified,Metadata,ImageCode,PageWithSimilarImage,Labels,Racy,Violence,Spoof,Medical,Adult) VALUES ('"+datecrated+"','"+datemodified+"', '"+metadata.replaceAll("'","''")+"', '"+code+"', '"+similar.replaceAll("'","''")+"', '"+labels.replaceAll("'","''")+"', '"+racy+"', '"+violence+"', '"+spoof+"', '"+medical+"', '"+adult+"')";
-    else if(datecrated && !datemodified)
-        sql = "INSERT INTO "+dbName+".Immagini (CreatedDate,Metadata,ImageCode,PageWithSimilarImage,Labels,Racy,Violence,Spoof,Medical,Adult) VALUES ('"+datecrated+"', '"+metadata.replaceAll("'","''")+"', "+code+", '"+similar.replaceAll("'","''")+"', '"+labels.replaceAll("'","''")+"', '"+racy+"', '"+violence+"', '"+spoof+"', '"+medical+"', '"+adult+"')";
-    else if(!datecrated && datemodified)
-        sql = "INSERT INTO "+dbName+".Immagini (DateModified,Metadata,ImageCode,PageWithSimilarImage,Labels,Racy,Violence,Spoof,Medical,Adult) VALUES ('"+datemodified+"','"+metadata.replaceAll("'","''")+"', "+code+", '"+similar.replaceAll("'","''")+"', '"+labels.replaceAll("'","''")+"', '"+racy+"', '"+violence+"', '"+spoof+"', '"+medical+"', '"+adult+"')";
-    else
-        sql = "INSERT INTO "+dbName+".Immagini (Metadata,ImageCode,PageWithSimilarImage,Labels,Racy,Violence,Spoof,Medical,Adult) VALUES ('"+metadata.replaceAll("'","''")+"', "+code+", '"+similar.replaceAll("'","''")+"', '"+labels.replaceAll("'","''")+"', '"+racy+"', '"+violence+"', '"+spoof+"', '"+medical+"', '"+adult+"')";
-    console.log(sql);
-    BD.Open(sql).then(function(result){
-        res.json(result);
-    })
-});
-
-router.post('/addReport', isAuth, async (req, res) => {
-    //console.log("echo:",req.body);
-    let id_fonte = req.body.source;
-    let id_notizia = req.body.id;
-    let motivazione = req.body.type;
-    let data_ora_segnalazione =new Date().toISOString().split('.')[0];
-    let id_utente = req.body.user;
-    let tipo_notizia = req.body.searchType;
-    let segnalazione = req.body.comment;
-
-
-    sql = "INSERT INTO "+dbName+".segnalazioni (ID_Fonte,ID_Notizia,Motivazione,Data_ora_segnalazione,ID_Utente,TipoNotizia,Segnalazione) VALUES ('"+id_fonte+"', "+id_notizia+", '"+motivazione+"', '"+data_ora_segnalazione+"', '"+id_utente+"', '"+tipo_notizia+"', '"+segnalazione+"')";
-    console.log(sql)
-    BD.Open(sql).then(function(result){
-        if(id_notizia=="null"){
-                sql = `Select count(*) as total from `+dbName+`.segnalazioni WHERE ID_Fonte = "${id_fonte}"`;
-                BD.Open(sql).then(function(result){
-                    if(result[0] && result[0].total>50){
-                        sql = `Update `+dbName+`.fonti set blocked = true WHERE ID_Fonte = "${id_fonte}"`;
-                        BD.Open(sql).then(function(result){
-                            res.json(result);
-                        })
-                    }
-                    else{
-                        res.json(result);
-                    }
-                })
-        }
-        else{
-            res.json(result);
-        }
-    })
-});
-
-router.post('/getReportResult', isAuth, async (req, res) => {
-    //console.log("echo:",req.body);
-    let typeSearch = req.body.typeSearch;
-    let id_notizia = req.body.id;
-
-    sql="select motivazione,Data_ora_segnalazione,Segnalazione,concat(b.Nome,' ',b.Cognome) as 'Utente' from "+dbName+".segnalazioni a join misinformationfightsystem.utenti b on a.ID_Utente=b.ID_Utente where a.ID_Notizia="+id_notizia+" and a.TipoNotizia='"+typeSearch+"'"
-    console.log(sql)
-    BD.Open(sql).then(function(result){
-        res.json(result);
-    })
-});
-
-router.post('/getReportSource', isAuth, async (req, res) => {
-    //console.log("echo:",req.body);
-    let typeSearch = req.body.typeSearch;
-    let id_fonte = req.body.id;
-
-    sql="select motivazione,Data_ora_segnalazione,Segnalazione,concat(b.Nome,' ',b.Cognome) as 'Utente' from "+dbName+".segnalazioni a join misinformationfightsystem.utenti b on a.ID_Utente=b.ID_Utente where a.ID_Fonte='"+id_fonte+"' and a.TipoNotizia='"+typeSearch+"'"
-    console.log(sql)
-    BD.Open(sql).then(function(result){
-        res.json(result);
-    })
-});
-
-router.post('/getArticle', isAuth, async (req, res) => {
-    console.log("echo:",req.body);
-    let url = req.body.url;
-
-
-    sql = "SELECT * FROM "+dbName+".Articoli WHERE Url = '"+url+"'";
-    BD.Open(sql).then(function(result){
-        res.json(result);
-    })
-})
-
-router.post('/getImage', isAuth, async (req, res) => {
-    console.log("echo:",req.body);
-    let code = req.body.code;
-
-
-    sql = "SELECT * FROM "+dbName+".Immagini WHERE ImageCode = '"+code+"'";
-    BD.Open(sql).then(function(result){
-        res.json(result);
-    })
-})
-
-router.post('/getSource', isAuth, async (req, res) => {
-    console.log("echo:",req.body);
-    let source = req.body.source;
-
-
-    sql = "SELECT * FROM "+dbName+".Fonti WHERE ID_Fonte = '"+source+"'";
-    BD.Open(sql).then(function(result){
-        res.json(result);
-    })
-})
-
-router.post('/blockSourceForUser', isAuth, async (req, res) => {
-    console.log("echo:",req.body);
-    let id_utente = req.body.id_utente;
-    let id_fonte = req.body.id_fonte;
-
-
-    sql = "INSERT INTO "+dbName+".utenti_fontibloccate (id_fonte,id_utente) VALUES('"+id_fonte+"','"+id_utente+"')";
-    BD.Open(sql).then(function(result){
-        res.json(result);
-    })
-})
-
-
-router.post('/checkArticle', isAuth, async (req, res) => {
-    let url = req.body.url;
-    sql = `Select count(*) as total from `+dbName+`.Articoli WHERE url = "${url}"`;
-    BD.Open(sql).then(function(result){
-        if(result[0] && result[0].total>0){
-            res.send("true");
-        }
-        else{
-            res.send("false");
-        }
-    })
-});
-
-router.post('/checkImage', isAuth, async (req, res) => {
-    let code = req.body.code;
-    sql = `Select count(*) as total from `+dbName+`.Immagini WHERE ImageCode = "${code}"`;
-    BD.Open(sql).then(function(result){
-        if(result[0] && result[0].total>0){
-            res.send("true");
-        }
-        else{
-            res.send("false");
-        }
-    })
-});
-
-
-router.post('/checkSource', isAuth, async (req, res) => {
-    let source = req.body.source;
-    sql = `Select count(*) as total from `+dbName+`.Fonti WHERE ID_Fonte = "${source}"`;
-    BD.Open(sql).then(function(result){
-        if(result[0] && result[0].total>0){
-            res.send("true");
-        }
-        else{
-            res.send("false");
-        }
-    })
-});
-
-router.post('/checkIsBlocked', isAuth, async (req, res) => {
-    let source = req.body.source;
-    let utente = req.body.utente;
-    sql = `select count(*) as total from (select ID_Fonte as "id_fonte" from `+dbName+`.fonti  a where blocked = true and ID_Fonte = "${source}" union select b.id_fonte from `+dbName+`.utenti_fontibloccate b  WHERE ID_Fonte = "${source}" and ID_UTENTE ="${utente}") as c`;
-    BD.Open(sql).then(function(result){
-        if(result[0] && result[0].total>0){
-            res.send("true");
-        }
-        else{
-            res.send("false");
-        }
-    })
-});
-
-router.post('/getMyBlockedSource', isAuth, async (req, res) => {
-    let utente = req.body.utente;
-    sql = `select b.id_fonte from `+dbName+`.utenti_fontibloccate b  WHERE ID_UTENTE ="${utente}"`;
-    BD.Open(sql).then(function(result){
-        res.json(result)
-    })
-});
-
-router.post('/unblockedMySource', isAuth, async (req, res) => {
-    let utente = req.body.utente;
-    let id_fonte = req.body.source;
-    sql = `delete from `+dbName+`.utenti_fontibloccate  WHERE ID_UTENTE ="${utente}" and ID_FONTE = "${id_fonte}"`;
-    BD.Open(sql).then(function(result){
-        res.json(result)
-    })
-});
-
-
-router.post('/addSource', isAuth, async (req, res) => {
-    console.log("echo:",req.body);
-    let source = req.body.title;
-    let check = req.body.check;
-    let checkText = req.body.checkText.replaceAll("'","''");
-
-    sql = `INSERT INTO `+dbName+`.Fonti (ID_Fonte,IsValid,CheckText) VALUES ("${source}",${check},"${checkText}")`;
-    BD.Open(sql).then(function(result){
-        res.json(result);
-    })
-});
-
-router.post('/getMetaAtricle', isAuth, async (req, res) => {
-    let url = req.body.url;
-    const metaHeaders = [];
-    const name = "source";
-    const content = url.split('/')[2];
-    metaHeaders.push({ name, content });    
-    try{
-      axios.get(url).then(function(response){
-            const html = response.data;
-        
-            // Parse the HTML using cheerio
-            const $ = cheerio.load(html);
-            
-            // Extract meta headers
-            if($('meta')){
-                $('meta').each((index, element) => {
-                    let name ="";
-                    if($(element).attr('name'))
-                        name = $(element).attr('name');
-                    if($(element).attr('property'))
-                        name= $(element).attr('property');
-                    const content = $(element).attr('content');
-                    
-                    if (name && content) {
-                        metaHeaders.push({ name, content });
-                    }
-                    });   
-            }
-                     
-            res.json(JSON.stringify(metaHeaders));
-        
-      });
-    }
-    catch (error) {
-        res.json({"error":error});
-    }
-      
-});
-
-router.post('/exif', isAuth, async (req, res) => {
-    
-  // Esegui il comando ExifTool per ottenere i metadati dell'immagine
-  const comando = `"C:\\Program Files\\ExifTool\\ExifTool.exe" -j "C:\\Users\\rguastamacchia\\Documents\\MisinformationFightSystem\\RestServices\\${req.body.filename}"`;
-  try {
-    const response = await axios.get(req.body.image, { responseType: 'stream' });
-    const writer = fs.createWriteStream(req.body.filename);
-    response.data.pipe(writer);
-
-      writer.on('finish', function(){
-        exec(comando, (errore, stdout, stderr) => {
-            if (errore) {
-              console.error(`Si è verificato un errore: ${errore}`);
-              res.status(500).send('Errore durante l\'analisi dell\'immagine.');
-              return;
-            }
-        
-            // Analizza l'output JSON restituito da ExifTool
-            const metadati = JSON.parse(stdout.trim());
-        
-            // Estrai la geolocalizzazione
-            const geolocalizzazione = {
-              latitudine: metadati[0].GPSLatitude,
-              longitudine: metadati[0].GPSLongitude
-            };
-        
-            // Crea un oggetto contenente i metadati e la geolocalizzazione
-            const response = {
-              metadati: metadati,
-            };
-            // Invia la risposta al client
-            res.send(response);
-          });
-      });
-  } catch (error) {
-    res.send(error);
-    throw new Error(`Error downloading image: ${error.message}`);
-  }
-
-  
-});
-
-router.post('/exiflocal', isAuth, async (req, res) => {
-    
-    // Esegui il comando ExifTool per ottenere i metadati dell'immagine
-    const comando = `"C:\\Program Files\\ExifTool\\ExifTool.exe" -j "${req.body.filename}"`;
-    try {
-        exec(comando, (errore, stdout, stderr) => {
-            if (errore) {
-            console.error(`Si è verificato un errore: ${errore}`);
-            res.status(500).send('Errore durante l\'analisi dell\'immagine.');
-            return;
-            }
-        
-            // Analizza l'output JSON restituito da ExifTool
-            const metadati = JSON.parse(stdout.trim());
-        
-            // Estrai la geolocalizzazione
-            const geolocalizzazione = {
-            latitudine: metadati[0].GPSLatitude,
-            longitudine: metadati[0].GPSLongitude
-            };
-        
-            // Crea un oggetto contenente i metadati e la geolocalizzazione
-            const response = {
-            metadati: metadati,
-            };
-            // Invia la risposta al client
-            res.send(response);
-        });
-    } catch (error) {
-      res.send(error);
-      throw new Error(`Error downloading image: ${error.message}`);
-    }
-  
-    
-});
-
-*/

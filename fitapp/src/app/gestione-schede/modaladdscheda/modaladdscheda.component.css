@@ -1,0 +1,10 @@
+.popup{
+    min-width: 800px;
+    max-height: 600px;
+}
+@media (min-width:150px) and (max-width:700px) {
+    .popup{
+        min-width: 300px;
+        max-height: 800px;
+    } 
+  }

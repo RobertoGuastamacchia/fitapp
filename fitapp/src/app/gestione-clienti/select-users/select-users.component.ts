@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
-import { APIModule } from '../api/api.module';
-import { Exercise } from '../classes/user';
+import { APIModule } from '../../api/api.module';
+import { User } from '../../classes/user';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { ExerciseComponent } from './exercise/exercise.component';
-import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatInputModule } from '@angular/material/input';
 import {
@@ -18,15 +16,16 @@ import {
 } from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-esercizi',
+  selector: 'app-select-users',
   standalone: true,
-  imports: [APIModule,FormsModule,CommonModule,MatButtonModule,MatMenuModule,MatInputModule],
-  templateUrl: './esercizi.component.html',
-  styleUrl: './esercizi.component.css'
+  imports: [CommonModule,FormsModule,APIModule,MatInputModule,MatMenuModule,MatDialogClose],
+  templateUrl: './select-users.component.html',
+  styleUrl: './select-users.component.css'
 })
-export class EserciziComponent {
-  exes:Exercise[] = []
-  fullexes:Exercise[] = []
+export class SelectUsersComponent {
+  api
+  users:User[] = []
+  fullUsers:User[] = []
   sortColumn:any= {
     field:"",
     active:false,
@@ -34,39 +33,33 @@ export class EserciziComponent {
   };
   sortOrder: string | null = null;
   filters: any = {
-    nome:{
+    name:{
       active:false,
       value:""
     },
-    descrizione:{
+    surname:{
       active:false,
       value:""
     },
-    muscoli:{
+    email:{
       active:false,
       value:""
     }
   }
-  constructor(api:APIModule,public dialog: MatDialog){
-    api.getExercises().subscribe((data:any) => {
-      data.forEach((element:any) => {
-        this.exes.push(new Exercise(element))        
-        this.fullexes.push(new Exercise(element))
+  constructor(_api:APIModule){
+    let context=this
+    this.api=_api
+    this.api.getFreeUsers().subscribe(function(result:any){
+      result.forEach((e:any) => {
+        context.users.push(new User(e))
+        context.fullUsers.push(new User(e))
       });
-      console.log(this.exes);
     })
   }
 
-  openDialog(exe:Exercise): void {
-    const dialogRef = this.dialog.open(ExerciseComponent);
-    let c = dialogRef.componentInstance;
-    c.data = (exe)
-    dialogRef.afterClosed().subscribe(result => {});
-  }
-  
   public filterTable() {
     let context = this;
-    let dati = [...context.fullexes]
+    let dati = [...context.fullUsers]
     Object.keys(this.filters).forEach((key: string) => {
         if (context.filters[key].value) {
           dati = [...dati.filter(function (v: any) { return (v[key] + "").toLocaleLowerCase().indexOf(context.filters[key].value.toLocaleLowerCase()) >= 0 ? true : false })]
@@ -75,7 +68,7 @@ export class EserciziComponent {
         else {
           context.filters[key].active = false;
         }
-      this.exes=[...dati];
+      this.users=[...dati];
 
     });
   }
@@ -96,7 +89,7 @@ export class EserciziComponent {
       };
     }
     let context = this;
-    let orderData = [...this.fullexes].sort(
+    let orderData = [...this.fullUsers].sort(
       (a: any, b: any) => {
         if (context.sortOrder == "asc" && context.sortColumn) {
           if (a[context.sortColumn!.field] < b[context.sortColumn!.field]) {
@@ -119,7 +112,7 @@ export class EserciziComponent {
         }
       }
     )
-    this.exes=[...orderData];
+    this.users=[...orderData];
   }
 
   public clearFilter(header: string) {
@@ -130,5 +123,4 @@ export class EserciziComponent {
       }}
     this.filterTable();
   }
-
 }

@@ -4,6 +4,16 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from '../app.component';
 import { Gym, User } from '../classes/user';
 import { APIModule } from '../api/api.module';
+import { ModalConfirmComponent } from '../components/modal-confirm/modal-confirm.component';
+import {
+  MatDialog,
+  MAT_DIALOG_DATA,
+  MatDialogRef,
+  MatDialogTitle,
+  MatDialogContent,
+  MatDialogActions,
+  MatDialogClose,
+} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-edit-user',
@@ -17,7 +27,7 @@ export class EditUserComponent {
   gym:Gym = new Gym()
   root:any
   api:any
-  constructor(_root:AppComponent,_api:APIModule){
+  constructor(_root:AppComponent,_api:APIModule,public dialog: MatDialog){
     this.root=_root;
     this.api=_api;
     this.user=JSON.parse(JSON.stringify(_root.getCurrentUser()));
@@ -39,12 +49,18 @@ export class EditUserComponent {
       }
     })
   }
-  deleteUser(){
-    this.api.deleteUser(this.user.id).subscribe((data: any) => {
-      alert("Account succesful deleted")
-      this.root.setCurrentUser(new User());
-      this.root.setIsLogged(false);
-      this.root.changePage("login");
-    })
+  openConfirmToRemove(): void {
+    let context= this;
+    const dialogRef = this.dialog.open(ModalConfirmComponent);
+    dialogRef.afterClosed().subscribe((ck:any) => {
+      if(ck){
+        this.api.deleteUser(this.user.id).subscribe((data: any) => {
+          alert("Account succesful deleted")
+          this.root.setCurrentUser(new User());
+          this.root.setIsLogged(false);
+          this.root.changePage("login");
+        })
+      }
+    });
   }
 }

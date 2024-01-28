@@ -1,0 +1,40 @@
+<div class="p-3 popup">
+    <h1>Crea Scheda</h1>
+    <hr>
+    <div class="row">
+        <div class="col-12">
+            <label for="name" class="form-label">Nome Scheda *</label>
+            <input type="text" class="form-control" id="name" [(ngModel)]="scheda['name']"
+              [ngModelOptions]="{standalone: true}" required>
+            <div class="invalid-feedback">
+              Inserisci un nome valido.
+            </div>
+        </div>
+        <hr>
+        <div class="col-6">
+            <label for="startDate" class="form-label">Data Inizio *</label>
+            <div class="input-group has-validation">
+              <input type="date" class="form-control" id="startDate" [(ngModel)]="scheda['startDate']"
+                [ngModelOptions]="{standalone: true}" required>
+              <div class="invalid-feedback">
+                Inserisci una data inizio valida.
+              </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <label for="endDate" class="form-label">Data Fine *</label>
+            <div class="input-group has-validation">
+              <input type="date" class="form-control" id="endDate" [(ngModel)]="scheda['endDate']"
+                [ngModelOptions]="{standalone: true}" required>
+              <div class="invalid-feedback">
+                Inserisci una data fine valida.
+              </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="text-end">
+        <button class="btn btn-sm btn-success me-2" (click)="createScheda()">Crea</button>
+        <button class="btn btn-sm btn-dark" [mat-dialog-close]="null">Annulla</button>
+    </div>
+</div>

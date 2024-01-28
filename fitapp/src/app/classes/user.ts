@@ -97,3 +97,22 @@ export class Exercise{
         this.img=dati.Path_Immagine
     }
 }
+
+export class Scheda{
+    id
+    nome
+    idPalestra
+    idCliente
+    idTrainer
+    dataInizio
+    dataFine
+    constructor(dati:any){
+        this.id=dati.ID_Scheda
+        this.idPalestra=dati.ID_Palestra
+        this.idCliente=dati.ID_Utente
+        this.idTrainer=dati.ID_Trainer
+        this.dataInizio=dati.Data_inizio?dati.Data_inizio.split("T")[0]:""
+        this.dataFine=dati.Data_fine?dati.Data_fine.split("T")[0]:""
+        this.nome=dati.Nome
+    }
+}

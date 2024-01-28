@@ -4,7 +4,7 @@ import { HttpClient, HttpClientModule, HttpHeaders } from '@angular/common/http'
 import { siteUrl, header, apiUrlList, addHeader, updateHeader, uploadFileHeader } from "../envirorment/envirorment";
 import { Observable } from 'rxjs';
 import axios from 'axios';
-import { Gym, User } from '../classes/user';
+import { Gym, Scheda, User } from '../classes/user';
 
 declare var require: any
 
@@ -127,13 +127,48 @@ export class APIModule {
     return this.http.get(apiUrlList + "/getExercises", headerRQS.header);
   }
 
+  getFreeUsers(): any {
+    var headerRQS: Header = new Header(header);
+    return this.http.get(apiUrlList + "/getFreeUsers", headerRQS.header);
+  }
+
+  addUserToGym(utente:User): any {
+    var data = utente;
+    var headerRQS: Header = new Header(header);
+    return this.http.post(apiUrlList + "/addUserToGym",data, headerRQS.header);
+  }
+
+  removeUserToGym(utente:User): any {
+    var data = utente;
+    var headerRQS: Header = new Header(header);
+    return this.http.post(apiUrlList + "/removeUserToGym",data, headerRQS.header);
+  }
+
+  removeUserScheda(scheda:Scheda): any {
+    var data = scheda;
+    var headerRQS: Header = new Header(header);
+    return this.http.post(apiUrlList + "/removeUserScheda",data, headerRQS.header);
+  }
+
+  getGymUsers(trainer:User): any {
+    var data = trainer;
+    var headerRQS: Header = new Header(header);
+    return this.http.post(apiUrlList + "/getGymUsers",data, headerRQS.header);
+  }
 
 
+  createScheda(scheda:Scheda):any{
+    var data = scheda;
+    var headerRQS: Header = new Header(header);
+    return this.http.post(apiUrlList + "/createScheda",data, headerRQS.header);
+  }
+  
 
-
-
-
-
+  userSchede(id:any):any{
+    var data = {id:id};
+    var headerRQS: Header = new Header(header);
+    return this.http.post(apiUrlList + "/userSchede",data, headerRQS.header);
+  }
 
 
 

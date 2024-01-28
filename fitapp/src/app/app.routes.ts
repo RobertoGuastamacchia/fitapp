@@ -7,6 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { EserciziComponent } from './esercizi/esercizi.component';
 import { GestioneClientiComponent } from './gestione-clienti/gestione-clienti.component';
+import { GestioneSchedeComponent } from './gestione-schede/gestione-schede.component';
 
 
 export const routes: Routes = [
@@ -18,6 +19,7 @@ export const routes: Routes = [
     { path: 'editUser', component: EditUserComponent},    
     { path: 'esercizi', component: EserciziComponent},     
     { path: 'gestioneclienti', component: GestioneClientiComponent}, 
+    { path: 'gestioneschede/:id', component: GestioneSchedeComponent}, 
   ];
 NgModule({
     imports: [RouterModule.forRoot(routes,{useHash: true})],
