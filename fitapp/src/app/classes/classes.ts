@@ -98,6 +98,23 @@ export class Exercise{
     }
 }
 
+export class GestExercise extends Exercise{
+    serie:number = 0
+    ripetizioni:any = []
+    pesi:any = [] 
+    check:any = false
+    constructor(dati:any){
+        super(dati)
+        this.descrizione=""
+        this.istruzioni=""
+        this.linkTutorial=""
+        this.img=""
+        this.serie = dati.Serie?dati.Serie:null
+        this.ripetizioni = dati.Ripetizioni?dati.Ripetizioni:[]
+        this.pesi = dati.Pesi?dati.Pesi:[]
+    }
+}
+
 export class Scheda{
     id
     nome
@@ -109,7 +126,7 @@ export class Scheda{
     constructor(dati:any){
         this.id=dati.ID_Scheda
         this.idPalestra=dati.ID_Palestra
-        this.idCliente=dati.ID_Utente
+        this.idCliente=dati.ID_Cliente
         this.idTrainer=dati.ID_Trainer
         this.dataInizio=dati.Data_inizio?dati.Data_inizio.split("T")[0]:""
         this.dataFine=dati.Data_fine?dati.Data_fine.split("T")[0]:""

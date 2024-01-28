@@ -209,6 +209,25 @@ router.post('/userSchede', isAuth, async (req, res) => {
     })
 });
 
+router.post('/saveScheda', isAuth, async (req, res) => {
+    let id = req.body.id;
+    let json = req.body.json;
+    sql = `UPDATE  `+dbName+`.schede SET json = '${json}' where ID_Scheda  = ${id}`;
+    //console.log(sql)
+    BD.Open(sql).then(function(result){
+        res.json(result);
+    })
+});
+
+router.post('/getScheda', isAuth, async (req, res) => {
+    let id = req.body.id;
+    sql = `Select * from `+dbName+`.schede where ID_Scheda = ${id}`;
+    console.log(sql)
+    BD.Open(sql).then(function(result){
+        res.json(result);
+    })
+});
+
 
 
 function isAuth(req, res, next) {

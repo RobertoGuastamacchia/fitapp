@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
-import { Exercise, User } from '../classes/classes';
-import { SelectUsersComponent } from './select-users/select-users.component';
 import { APIModule } from '../api/api.module';
-import { AppComponent } from '../app.component';
+import { Exercise, GestExercise } from '../classes/classes';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ExerciseComponent } from '../esercizi/exercise/exercise.component';
+import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatInputModule } from '@angular/material/input';
 import {
@@ -17,22 +16,24 @@ import {
   MatDialogActions,
   MatDialogClose,
 } from '@angular/material/dialog';
-import { ModalConfirmComponent } from '../components/modal-confirm/modal-confirm.component';
-import { RouterModule } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
+import { AppComponent } from '../app.component';
 
 @Component({
-  selector: 'app-gestione-clienti',
+  selector: 'app-modifica-schede',
   standalone: true,
   imports: [RouterModule,CommonModule,FormsModule,APIModule,AppComponent,MatMenuModule,MatInputModule],
-  templateUrl: './gestione-clienti.component.html',
-  styleUrl: './gestione-clienti.component.css'
+  templateUrl: './modifica-schede.component.html',
+  styleUrl: './modifica-schede.component.css'
 })
-export class GestioneClientiComponent {
-  clienteToAdd:User = new User()
-  myUsers:User[]=[]
-  api:any
-  root:AppComponent
-  fullUsers:User[] = []
+export class ModificaSchedeComponent {
+  root;
+  idScheda=-1;
+  idCliente=-1;
+  route;
+  api;
+  exes:GestExercise[] = []
+  fullexes:GestExercise[] = []
   sortColumn:any= {
     field:"",
     active:false,
@@ -40,63 +41,53 @@ export class GestioneClientiComponent {
   };
   sortOrder: string | null = null;
   filters: any = {
-    name:{
+    nome:{
       active:false,
       value:""
     },
-    surname:{
+    descrizione:{
       active:false,
       value:""
     },
-    email:{
+    muscoli:{
       active:false,
       value:""
     }
   }
-  constructor(_root:AppComponent,_api:APIModule,public dialog: MatDialog){
-    this.api=_api
+  constructor(_api:APIModule,_root:AppComponent,public dialog: MatDialog,_route:ActivatedRoute){
     this.root=_root
-    let context = this;
-    this.api.getGymUsers(this.root.getCurrentUser()).subscribe(function(users:any){
-      users.forEach((element:any) => {
-        context.myUsers.push(new User(element))
-        context.fullUsers.push(new User(element))
+    this.route=_route
+    this.api=_api
+    this.api.getExercises().subscribe((data:any) => {
+      data.forEach((element:any) => {
+        this.exes.push(new GestExercise(element))        
+        this.fullexes.push(new GestExercise(element))
       });
+      console.log(this.exes);
+    })
+  }
+  ngOnInit(){
+    this.idScheda = parseInt(this.route.snapshot.paramMap.get('id') as string);
+    this.idCliente = parseInt(this.route.snapshot.paramMap.get('idCliente') as string);
+    let context = this;
+    
+    this.api.getScheda(this.idScheda).subscribe(function(r:any){
+      if(r.length>0 && r[0].JSON){
+        context.exes = JSON.parse(r[0].JSON) as GestExercise[]
+      }
     })
   }
 
-  openDialogAddUser(): void {
-    let context= this;
-    const dialogRef = this.dialog.open(SelectUsersComponent);
-    dialogRef.afterClosed().subscribe((newUser:User) => {
-      newUser.idGym = context.root.getCurrentUserGym().id;
-      context.api.addUserToGym(newUser).subscribe(function(r:any){
-        alert("Utente inscritto Correttamente")
-        context.fullUsers.push(newUser)
-        context.filterTable()
-      })
-    });
+  openDialog(exe:GestExercise): void {
+    const dialogRef = this.dialog.open(ExerciseComponent);
+    let c = dialogRef.componentInstance;
+    c.data = (exe)
+    dialogRef.afterClosed().subscribe(result => {});
   }
-
-
-  openConfirmToRemove(u:User): void {
-    let context= this;
-    const dialogRef = this.dialog.open(ModalConfirmComponent);
-    dialogRef.afterClosed().subscribe((ck:any) => {
-      if(ck){
-        context.api.removeUserToGym(u).subscribe(function(r:any){
-          let del_u = context.myUsers.findIndex(function(us:User){return u.id==us.id})
-          context.fullUsers.splice(del_u,1);
-          context.filterTable()
-          alert("Utente rimosso correttamente")
-        })
-      }
-    });
-  }
-
+  
   public filterTable() {
     let context = this;
-    let dati = [...context.fullUsers]
+    let dati = [...context.fullexes]
     Object.keys(this.filters).forEach((key: string) => {
         if (context.filters[key].value) {
           dati = [...dati.filter(function (v: any) { return (v[key] + "").toLocaleLowerCase().indexOf(context.filters[key].value.toLocaleLowerCase()) >= 0 ? true : false })]
@@ -105,7 +96,7 @@ export class GestioneClientiComponent {
         else {
           context.filters[key].active = false;
         }
-      this.myUsers=[...dati];
+      this.exes=[...dati];
 
     });
   }
@@ -126,7 +117,7 @@ export class GestioneClientiComponent {
       };
     }
     let context = this;
-    let orderData = [...this.fullUsers].sort(
+    let orderData = [...this.fullexes].sort(
       (a: any, b: any) => {
         if (context.sortOrder == "asc" && context.sortColumn) {
           if (a[context.sortColumn!.field] < b[context.sortColumn!.field]) {
@@ -149,7 +140,7 @@ export class GestioneClientiComponent {
         }
       }
     )
-    this.myUsers=[...orderData];
+    this.exes=[...orderData];
   }
 
   public clearFilter(header: string) {
@@ -159,6 +150,12 @@ export class GestioneClientiComponent {
         value:""
       }}
     this.filterTable();
+  }
+
+  saveScheda(){
+    this.api.saveScheda(this.idScheda,this.exes).subscribe(function(r:any){
+      alert("Scheda salvata correttamente")
+    })
   }
 
 }

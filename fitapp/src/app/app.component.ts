@@ -4,7 +4,7 @@ import { Router, RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
-import { Gym, User } from './classes/user';
+import { Gym, User } from './classes/classes';
 
 @Component({
   selector: 'app-root',

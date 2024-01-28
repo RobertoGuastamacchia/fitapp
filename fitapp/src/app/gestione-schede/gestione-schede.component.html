@@ -20,7 +20,7 @@
                     <tr *ngFor="let s of schede">
                         <td>
                             <button class="btn btn-danger btn-sm" (click)="openConfirmToRemove(s)"><i class="bi bi-trash-fill"></i></button>
-                            <button class="btn btn-primary btn-sm ms-2"><i class="bi bi-pencil-square"></i></button>
+                            <button class="btn btn-primary btn-sm ms-2" [routerLink]="['/modificascheda',s.idCliente,s.id]"><i class="bi bi-pencil-square"></i></button>
                         </td>
                         <td>{{s.nome}}</td>
                         <td>{{s.dataInizio}}</td>

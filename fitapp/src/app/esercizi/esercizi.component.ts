@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { APIModule } from '../api/api.module';
-import { Exercise } from '../classes/user';
+import { Exercise } from '../classes/classes';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ExerciseComponent } from './exercise/exercise.component';

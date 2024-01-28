@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, RouterLink, RouterModule } from '@angular/router';
-import { Gym, User } from '../classes/user';
+import { Gym, User } from '../classes/classes';
 import { AppComponent } from '../app.component';
 import { APIModule } from '../api/api.module';
 import { FormsModule } from '@angular/forms';

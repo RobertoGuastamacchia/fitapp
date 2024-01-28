@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { APIModule } from '../../api/api.module';
-import { User } from '../../classes/user';
+import { User } from '../../classes/classes';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MatMenuModule } from '@angular/material/menu';

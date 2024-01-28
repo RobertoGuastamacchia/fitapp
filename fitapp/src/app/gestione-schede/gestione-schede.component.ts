@@ -10,7 +10,7 @@ import {
 } from '@angular/material/dialog';
 import { ModalConfirmComponent } from '../components/modal-confirm/modal-confirm.component';
 import { ModaladdschedaComponent } from './modaladdscheda/modaladdscheda.component';
-import { Scheda, User } from '../classes/user';
+import { Scheda, User } from '../classes/classes';
 import { AppComponent } from '../app.component';
 import { ActivatedRoute, Route, RouterModule } from '@angular/router';
 import { APIModule } from '../api/api.module';

@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from '../app.component';
-import { Gym, User } from '../classes/user';
+import { Gym, User } from '../classes/classes';
 import { APIModule } from '../api/api.module';
 import { ModalConfirmComponent } from '../components/modal-confirm/modal-confirm.component';
 import {
