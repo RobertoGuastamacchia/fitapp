@@ -8,8 +8,14 @@
                 <label for="email">Email address</label>
             </div>
             <div class="form-floating mt-3">
-                <input type="password" class="form-control" id="password" placeholder="Password" [(ngModel)]="formData['password']" [ngModelOptions]="{standalone: true}">
-                <label for="password">Password</label>
+                <div class="input-group mb-3" *ngIf="!isPasswordVisible">
+                    <input type="password" class="form-control" placeholder="Password"  [(ngModel)]="formData['password']" [ngModelOptions]="{standalone: true}">
+                    <span class="input-group-text" id="basic-addon2" (click)="passwordVisible(true)"><i class="bi bi-eye-fill"></i></span>
+                </div>
+                <div class="input-group mb-3" *ngIf="isPasswordVisible">
+                    <input type="test" class="form-control" placeholder="Password"  [(ngModel)]="formData['password']" [ngModelOptions]="{standalone: true}">
+                    <span class="input-group-text" id="basic-addon2" (click)="passwordVisible(false)"><i class="bi bi-eye-slash-fill"></i></span>
+                </div>
             </div>
             <div class="mt-3">
                 <button class="btn btn-primary w-100 py-2" type="button" (click)="logIn()">Login</button>

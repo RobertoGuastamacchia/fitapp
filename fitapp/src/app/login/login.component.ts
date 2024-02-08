@@ -15,10 +15,17 @@ import { CommonModule } from '@angular/common';
 })
 export class LoginComponent {
   root:any=null;
+  isPasswordVisible=false
   constructor(root: AppComponent, private api: APIModule, private _router: Router) {
     this.root=root;
   }
   formData = new LoginData();
+
+  passwordVisible(value:any){
+    this.isPasswordVisible=value;
+  }
+
+
   logIn(){
     if(this.formData.email && this.formData.password){
         this.api.login(this.formData.email.toLowerCase(),this.formData.password).subscribe((data: any) => {
